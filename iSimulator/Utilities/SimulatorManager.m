@@ -11,6 +11,8 @@
 #import "URLContent.h"
 #import "Shell.h"
 
+#import "OpenFinder.h"
+
 #import "S_AppInfo.h"
 #import "S_Device.h"
 
@@ -201,17 +203,40 @@
 
 - (void)addPhotoToDevice:(S_Device *)device
 {
-    //xcrun simctl addphoto <device> <path> [... <path>]
+    [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg"] complete:^(NSArray<NSURL *> *urls) {
+        //xcrun simctl addphoto <device> <path> [... <path>]
+        NSMutableString *urlStr = [NSMutableString stringWithString:@""];
+        for (NSURL *url in urls) {
+            [urlStr appendFormat:@"\"%@\"", [url path]];
+            [urlStr appendString:@" "];
+        }
+        if (urlStr.length) {
+            shell(@"xcrun simctl addphoto ", @[device.UDID, urlStr]);
+        }
+    }];
 }
 
 - (void)addVideoToDevice:(S_Device *)device
 {
-    //xcrun simctl addvideo <device> <path> [... <path>]
+    [OpenFinder multipleSelectFile:@[@"mp4"] complete:^(NSArray<NSURL *> *urls) {
+        //xcrun simctl addvideo <device> <path> [... <path>]
+        NSMutableString *urlStr = [NSMutableString stringWithString:@""];
+        for (NSURL *url in urls) {
+            [urlStr appendFormat:@"\"%@\"", [url path]];
+            [urlStr appendString:@" "];
+        }
+        if (urlStr.length) {
+            shell(@"xcrun simctl addvideo ", @[device.UDID, urlStr]);
+        }
+    }];
 }
 
 - (void)installAppInSimulator:(S_Device *)device
 {
-    //xcrun simctl install booted <path>
+    [OpenFinder selectFile:@[@"app"] complete:^(NSURL *url) {
+        //xcrun simctl install booted <path>
+        shell(@"xcrun simctl install booted ", @[[NSString stringWithFormat:@"\"%@\"", url.path]]);
+    }];
 }
 #pragma mark - 应用
 
@@ -264,4 +289,5 @@
 {
     shell(@"xcrun simctl uninstall booted ", @[appInfo.bundleId]);
 }
+
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainMenu.h"
+#import "NSAlert+Block.h"
 
 @interface AppDelegate () <MainMenuDelegate>
 
@@ -30,7 +31,8 @@
 #pragma mark - MainMenuDelegate
 - (void)mainMenuAboutApp:(MainMenu *)mainMenu
 {
-    
+    NSAlert *alert = [[NSAlert alloc] initWithInfoTitle:@"关于" message:@"感谢你的使用。" cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert beginSheetModalForWindow:[[NSApplication sharedApplication] windows].firstObject completionHandler:nil];
 }
 
 - (void)mainMenuPreferencesApp:(MainMenu *)mainMenu

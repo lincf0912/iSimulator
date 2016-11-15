@@ -20,6 +20,8 @@
 		6F1E0D371DD07D4C005160D0 /* URLContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D361DD07D4C005160D0 /* URLContent.m */; };
 		6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D391DD086C8005160D0 /* Shell.m */; };
 		6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */; };
+		6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEFA1DDAA71500BB307D /* OpenFinder.m */; };
+		6F37A72D1DDAB76A00D3A7E3 /* NSAlert+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F37A72C1DDAB76A00D3A7E3 /* NSAlert+Block.m */; };
 		6F4627031DD00B9300355984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627021DD00B9300355984 /* AppDelegate.m */; };
 		6F4627061DD00B9300355984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627051DD00B9300355984 /* main.m */; };
 		6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F46270A1DD00B9300355984 /* Assets.xcassets */; };
@@ -53,6 +55,10 @@
 		6F1E0D391DD086C8005160D0 /* Shell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shell.m; sourceTree = "<group>"; };
 		6F1E0D3C1DD165BB005160D0 /* iActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iActivityIndicatorView.h; sourceTree = "<group>"; };
 		6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iActivityIndicatorView.m; sourceTree = "<group>"; };
+		6F31FEF91DDAA71500BB307D /* OpenFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenFinder.h; sourceTree = "<group>"; };
+		6F31FEFA1DDAA71500BB307D /* OpenFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenFinder.m; sourceTree = "<group>"; };
+		6F37A72B1DDAB76A00D3A7E3 /* NSAlert+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+Block.h"; sourceTree = "<group>"; };
+		6F37A72C1DDAB76A00D3A7E3 /* NSAlert+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+Block.m"; sourceTree = "<group>"; };
 		6F4626FE1DD00B9300355984 /* iSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4627011DD00B9300355984 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6F4627021DD00B9300355984 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 				6F1D5FD81DD321700056ED24 /* NSImage+Addition.m */,
 				6F1D606C1DD557AC0056ED24 /* NSNumber+Addition.h */,
 				6F1D606D1DD557AC0056ED24 /* NSNumber+Addition.m */,
+				6F37A72B1DDAB76A00D3A7E3 /* NSAlert+Block.h */,
+				6F37A72C1DDAB76A00D3A7E3 /* NSAlert+Block.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -117,6 +125,8 @@
 				6F1D60701DD56EFA0056ED24 /* SimulatorMonitor.m */,
 				6F1E0D381DD086C8005160D0 /* Shell.h */,
 				6F1E0D391DD086C8005160D0 /* Shell.m */,
+				6F31FEF91DDAA71500BB307D /* OpenFinder.h */,
+				6F31FEFA1DDAA71500BB307D /* OpenFinder.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -256,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F4627061DD00B9300355984 /* main.m in Sources */,
+				6F37A72D1DDAB76A00D3A7E3 /* NSAlert+Block.m in Sources */,
+				6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */,
 				6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */,
 				6F1E0D301DD07900005160D0 /* S_Device.m in Sources */,
 				6F4627031DD00B9300355984 /* AppDelegate.m in Sources */,
