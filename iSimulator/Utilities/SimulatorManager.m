@@ -111,7 +111,6 @@
         self.monitor = [[SimulatorMonitor alloc] init];
         
         void (^monitorUrl)() = ^{
-            [self.monitor cancel];
             /** 监听设备URL */
             [self.monitor addMonitor:devicePathURL()];
             for (NSDictionary *dict in self.container) {
@@ -120,26 +119,27 @@
                     for (S_Device *device in devices) {
                         /** 监听设备状态URL */
                         [self.monitor addMonitor:deviceURL(device.UDID)];
-                        if (device.state == DeviceState_Shutdown) {
-                            continue;
+                        NSURL *applicationUrl = applicationForDeviceURL(device.UDID);
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:applicationUrl.path]) {
+                            [self.monitor addMonitor:applicationUrl];
                         }
-                        [self.monitor addMonitor:applicationForDeviceURL(device.UDID)];
                     }
                 }
             }
-            [self.monitor start];
         };
         
         monitorUrl();
+        [self.monitor start];
         
         [self.monitor setCompleteBlock:^(NSURL *url) {
             /** 如果非应用目录变化，则需要刷新监听列表 */
             BOOL isNotAPPUrl = ![url.path containsString:applicationForDevice];
             if (isNotAPPUrl) {
-                [weakSelf.monitor cancel];
+                [weakSelf.monitor cancelWithUrl:url];
             }
             [weakSelf loadData:^{
                 if (isNotAPPUrl) {
+                    [weakSelf.monitor cancel];
                     /** 重置监听 */
                     monitorUrl();
                 }

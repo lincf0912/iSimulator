@@ -64,7 +64,13 @@ void _dispatch_cancel(dispatch_cancelable_block_t block)
 
 - (void)addMonitor:(NSURL *)url
 {
+    if (url == nil) return;
     NSString *path = url.path;
+    
+    /** 跳过存在的监听 */
+    if ([self.myMonitors objectForKey:url]) {
+        return;
+    }
     
     int fd = open(path.fileSystemRepresentation, O_EVTONLY);
     if (fd == -1)
