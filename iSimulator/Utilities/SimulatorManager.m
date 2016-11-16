@@ -117,11 +117,14 @@
                 for (NSString *key in dict) {
                     NSArray *devices = dict[key];
                     for (S_Device *device in devices) {
-                        /** 监听设备状态URL */
-                        [self.monitor addMonitor:deviceURL(device.UDID)];
-                        NSURL *applicationUrl = applicationForDeviceURL(device.UDID);
-                        if ([[NSFileManager defaultManager] fileExistsAtPath:applicationUrl.path]) {
-                            [self.monitor addMonitor:applicationUrl];
+                        /** 只监听可用模拟器 */
+                        if (device.isUnavailable == NO) {
+                            /** 监听设备状态URL */
+                            [self.monitor addMonitor:deviceURL(device.UDID)];
+                            NSURL *applicationUrl = applicationForDeviceURL(device.UDID);
+                            if ([[NSFileManager defaultManager] fileExistsAtPath:applicationUrl.path]) {
+                                [self.monitor addMonitor:applicationUrl];
+                            }
                         }
                     }
                 }
