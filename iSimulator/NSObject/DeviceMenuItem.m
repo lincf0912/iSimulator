@@ -31,7 +31,13 @@
 - (void)buildUI
 {
     NSFont *font = [NSFont systemFontOfSize:14.f];
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString:self.device.name attributes:@{NSFontAttributeName:font}];
+    
+    NSString *name = self.device.name;
+    if (self.device.isUnavailable)
+    {
+        name = [name stringByAppendingString:@" (Unavailable)"];
+    }
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:name attributes:@{NSFontAttributeName:font}];
     font = [NSFont systemFontOfSize:11.f];
     NSAttributedString *detail = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%ld apps installed", self.device.appList.count] attributes:@{NSFontAttributeName:font}];
     NSMutableAttributedString *mutableAttribStr = [[NSMutableAttributedString alloc] init];

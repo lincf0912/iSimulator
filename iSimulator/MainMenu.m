@@ -18,7 +18,7 @@
 #import "S_AppInfo.h"
 
 NSString *const mainMenuTitle = @"Main Menu";
-NSInteger const recent_max = 3;
+NSInteger const recent_max = 5;
 
 @interface MainMenu () <NSMenuDelegate, ApplicationMenuItemDelegate>
 
@@ -81,12 +81,11 @@ NSInteger const recent_max = 3;
         recentLoaded.view = indicator;
         [menu insertItem:recentLoaded atIndex:0];
     }
-    if (isShowMenu) {
-        /** 必须先于赋值弹起，避免UI闪烁 */
-        [self.statusItem popUpStatusItemMenu:menu];
-    }
     self.statusItem.menu = menu;
     menu.delegate = self;
+    if (isShowMenu) {
+        [self.statusItem popUpStatusItemMenu:menu];
+    }
 }
 
 - (void)start
@@ -124,6 +123,8 @@ NSInteger const recent_max = 3;
                         
                         NSMenuItem *simulators = [MainMenu createTipsItemWithTitle:[NSString stringWithFormat:@"%@ Simulators", version]];
                         [menu insertItem:simulators atIndex:nextIndex++];
+                        
+                        BOOL isExistsDevice = NO;
                         /** 设备 */
                         NSArray *devics = allDevice[version];
                         for (S_Device *device in devics) {
@@ -153,7 +154,13 @@ NSInteger const recent_max = 3;
                                 [self createDeviceActionsInMenu:subMenu device:device];
                                 
                                 [deviceItem setSubmenu:subMenu];
+                                
+                                isExistsDevice = YES;
                             }
+                        }
+                        
+                        if (!isExistsDevice) {
+                            [menu removeItemAtIndex:--nextIndex];
                         }
                     }
                 }
@@ -268,6 +275,11 @@ NSInteger const recent_max = 3;
                owner:self];
     [pb setString:deviceURL.path forType:NSStringPboardType];
 }
+- (void)uninstall:(NSMenuItem *)item
+{
+    NSURL *deviceURL = [[SimulatorManager shareSimulatorManager] getDeviceUrl:item.representedObject];
+    [[NSFileManager defaultManager] removeItemAtURL:deviceURL error:nil];
+}
 
 #pragma mark - 私有
 - (void)createDeviceActionsInMenu:(NSMenu *)menu device:(S_Device *)device
@@ -299,6 +311,13 @@ NSInteger const recent_max = 3;
     copy.target = self;
     copy.representedObject = device;
     copy.image = [NSImage imageNamed:@"copy"];
+    
+    if (device.isUnavailable) {
+        NSMenuItem *uninstall = [menu addItemWithTitle:@"Uninstall..." action:@selector(uninstall:) keyEquivalent:@""];
+        uninstall.target = self;
+        uninstall.representedObject = device;
+        uninstall.image = [NSImage imageNamed:@"uninstall"];
+    }
 }
 
 + (NSMenuItem *)createTipsItemWithTitle:(NSString *)title

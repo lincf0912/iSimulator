@@ -40,7 +40,7 @@
         
         /** 获取设备下的应用列表 */
         NSURL *applicationForDevicePath = applicationForDeviceURL(self.UDID);
-        NSArray *dirEnumerator = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:applicationForDevicePath includingPropertiesForKeys:@[NSURLIsDirectoryKey] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants|NSDirectoryEnumerationSkipsHiddenFiles error:nil];
+        NSArray *dirEnumerator = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:applicationForDevicePath includingPropertiesForKeys:@[NSURLIsDirectoryKey, NSURLContentModificationDateKey] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants|NSDirectoryEnumerationSkipsHiddenFiles error:nil];
         for (NSURL *fileURL in dirEnumerator) {
             id isDirectoryObj;
             if ([fileURL getResourceValue:&isDirectoryObj

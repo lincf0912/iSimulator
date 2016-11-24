@@ -25,8 +25,8 @@
 @property (nonatomic, copy, readonly) NSString *UDID;
 /** 设备名称 */
 @property (nonatomic, copy, readonly) NSString *deviceName;
-
-@property (nonatomic, readonly) long long accessDateTime;
+/** 修改时间 */
+@property (nonatomic, readonly) long long sortDateTime;
 
 /** 异步获取应用大小 */
 - (void)getAppSize:(void (^)(long long appSize))complete;

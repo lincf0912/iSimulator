@@ -65,30 +65,31 @@
             /** 筛选iOS模拟器 */
             if ([version containsString:@"iOS"]) {
                 /** 筛选可利用的模拟器 */
-                NSMutableArray *data = [NSMutableArray array];
+                NSMutableArray *dataList = [NSMutableArray array];
                 NSArray *simulators = devices[version];
                 for (NSDictionary *sim in simulators) {
                     S_Device *d = [[S_Device alloc] initWithDictionary:sim];
-                    if (d.isUnavailable) {
-                        continue;
+                    [dataList addObject:d];
+                    if (!d.isUnavailable) {
+                        /** 可用模拟器才添加到最近列表 */
+                        [appList addObjectsFromArray:d.appList];
                     }
-                    [data addObject:d];
-                    [appList addObjectsFromArray:d.appList];
                 }
-                if (data.count) {
+                if (dataList.count) {
                     /** 过滤历史模拟器 */
                     NSString *key = version;
                     NSString *oldVersion = @"com.apple.CoreSimulator.SimRuntime.";
                     if ([key containsString:oldVersion]) {
-                        key = [[key substringToIndex:oldVersion.length] stringByReplacingOccurrencesOfString:@"-" withString:@","];
+                        key = [[key stringByReplacingOccurrencesOfString:oldVersion withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+                        key = [key stringByReplacingCharactersInRange:[key rangeOfString:@"."] withString:@" "];
                     }
-                    [container addObject:@{key:data}];
+                    [container addObject:@{key:dataList}];
                 }
             }
         }
         /** 筛选最近使用应用 */
         [appList sortUsingComparator:^NSComparisonResult(S_AppInfo *  _Nonnull obj1, S_AppInfo *  _Nonnull obj2) {
-            return obj1.accessDateTime < obj2.accessDateTime;
+            return obj1.sortDateTime < obj2.sortDateTime;
         }];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -117,10 +118,16 @@
                 for (NSString *key in dict) {
                     NSArray *devices = dict[key];
                     for (S_Device *device in devices) {
-                        /** 只监听可用模拟器 */
-                        if (device.isUnavailable == NO) {
-                            /** 监听设备状态URL */
-                            [self.monitor addMonitor:deviceURL(device.UDID)];
+                        /** 监听设备状态URL */
+                        NSURL *deviceDataUrl = deviceDataURL(device.UDID);
+                        NSURL *deviceUrl = deviceURL(device.UDID);
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:deviceDataUrl.path]) {
+                            [self.monitor addMonitor:deviceDataUrl];
+                        } else if ([[NSFileManager defaultManager] fileExistsAtPath:deviceUrl.path]) {
+                            [self.monitor addMonitor:deviceUrl];
+                        }
+                        /** 监听应用变化 */
+                        if (device.appList.count) {
                             NSURL *applicationUrl = applicationForDeviceURL(device.UDID);
                             if ([[NSFileManager defaultManager] fileExistsAtPath:applicationUrl.path]) {
                                 [self.monitor addMonitor:applicationUrl];
@@ -139,12 +146,17 @@
             BOOL isNotAPPUrl = ![url.path containsString:applicationForDevice];
             if (isNotAPPUrl) {
                 [weakSelf.monitor cancelWithUrl:url];
+            } else {
+                [weakSelf.monitor cancelWithUrl:devicePathURL()];
             }
             [weakSelf loadData:^{
                 if (isNotAPPUrl) {
                     [weakSelf.monitor cancel];
                     /** 重置监听 */
                     monitorUrl();
+                    [weakSelf.monitor start];
+                } else {
+                    [weakSelf.monitor addMonitor:devicePathURL()];
                 }
             }];
         }];

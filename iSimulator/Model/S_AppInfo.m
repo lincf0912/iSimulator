@@ -34,13 +34,13 @@
             return nil;
         }
         _url = appUrl;
-        id createDataObj;
-        [_url getResourceValue:&createDataObj
-                        forKey:NSURLContentAccessDateKey
+        id modifyDataObj;
+        [url getResourceValue:&modifyDataObj
+                        forKey:NSURLContentModificationDateKey
                          error:NULL];
-        _accessDateTime = [createDataObj timeIntervalSince1970];
+        _sortDateTime = [modifyDataObj timeIntervalSince1970];
         _deviceName = deviceName;
-#warning 拿到.project文件再定位具体指向的.plist文件 Info.plist 只是默认，并非肯定
+        
         NSURL *appInfoPath = [_url URLByAppendingPathComponent:@"Info.plist"];
         NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfURL:appInfoPath];
         NSString *bundleId = infoDict[@"CFBundleIdentifier"];
@@ -88,8 +88,8 @@
                 size += attributes.fileSize;
             }
             
-            self.appSize = size;
             dispatch_async(dispatch_get_main_queue(), ^{
+                self.appSize = size;
                 complete(self.appSize);
             });
         });

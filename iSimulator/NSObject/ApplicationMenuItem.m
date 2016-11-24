@@ -91,6 +91,7 @@
             NSString *sandboxSizeStr = [NSString stringWithFormat:@"Sandbox Size: %@", [@(sandboxSize) sizeToStr]];
             NSAttributedString *detail = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@\n%@\n%@",bundleId, version, bundleSizeStr, sandboxSizeStr] attributes:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[NSColor lightGrayColor]}];
             info.attributedTitle = detail;
+            [subMenu update];
         }];
     }];
     

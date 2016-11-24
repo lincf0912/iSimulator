@@ -29,8 +29,6 @@ OBJC_EXTERN NSURL * devicePathURL();
 OBJC_EXTERN NSURL * deviceURL(NSString *UDID);
 /** 设备数据路径 */
 OBJC_EXTERN NSURL * deviceDataURL(NSString *UDID);
-/** 应用状态文件路径 */
-OBJC_EXTERN NSURL * applicationStatePlistURL(NSString *UDID);
 /** 应用路径 */
 OBJC_EXTERN NSURL * applicationPathURL(NSString *UDID);
 /** 设备所属应用路径 */
