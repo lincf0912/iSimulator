@@ -20,9 +20,12 @@
 NSString *const mainMenuTitle = @"Main Menu";
 NSInteger const recent_max = 5;
 
+NSInteger const about_Tag = 990;
+
+
 @interface MainMenu () <NSMenuDelegate, ApplicationMenuItemDelegate>
 
-@property (nonatomic, assign) BOOL isShowMenu;
+@property (nonatomic, strong) NSMenu *menu_main;
 
 @end
 @implementation MainMenu
@@ -34,57 +37,44 @@ NSInteger const recent_max = 5;
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
         [_statusItem setImage:[NSImage imageNamed:@"MenuIcon"]];
         [_statusItem setHighlightMode:YES];
-        [self buildUI:nil];
+        [self buildUI];
     }
     return self;
 }
 
-- (void)buildUI:(void (^)(NSMenu *menu))overwriteheader
+- (void)buildUI
 {
-    BOOL isShowMenu = self.isShowMenu;
-    if (isShowMenu) {
-        [self.statusItem.menu cancelTrackingWithoutAnimation];
-    }
-    
-    NSMenu *menu = [[NSMenu alloc] initWithTitle:mainMenuTitle];
-    
-    /** 第三标题 */
-    NSMenuItem *aboutItem  = [[NSMenuItem alloc] initWithTitle:@"About iSimulators" action:@selector(appAbout:) keyEquivalent:@""];
-    aboutItem.target = self;
-    [menu addItem:aboutItem];
-    
-    NSMenuItem *prefeItem  = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(appPreferences:) keyEquivalent:@","];
-    prefeItem.target = self;
-    [menu addItem:prefeItem];
-    
-    [menu addItem:[NSMenuItem separatorItem]];
-    
-    /** 第四标题 */
-    NSMenuItem *quitItem  = [[NSMenuItem alloc] initWithTitle:@"Quit iSimulators" action:@selector(appQuit:) keyEquivalent:@"q"];
-    quitItem.target = self;
-    [menu addItem:quitItem];
-    
-    //        NSMenuItem * windowItem = [[NSMenuItem alloc] initWithTitle:@"Window Item" action:Nil keyEquivalent:@""];
-    //        [self addItem:windowItem];
-    //        NSMenu *windowMenu = [[NSMenu alloc] initWithTitle:@"window"];
-    //        [windowMenu addItemWithTitle:@"hide me" action:Nil keyEquivalent:@""];
-    //        [windowMenu addItemWithTitle:@"hide others" action:Nil keyEquivalent:@""];
-    //        [self setSubmenu:windowMenu forItem:windowItem];
-    
-    if (overwriteheader) {
-        overwriteheader(menu);
-    } else {
-        [menu insertItem:[NSMenuItem separatorItem] atIndex:0];
+    if (self.menu_main == nil) {
+        NSMenu *menu = [[NSMenu alloc] initWithTitle:mainMenuTitle];
+        
         /** 菊花加载 */
         NSMenuItem * recentLoaded = [MainMenu createTipsItemWithTitle:@""];
         iActivityIndicatorView *indicator = [[iActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, menu.size.width, 20)];
         recentLoaded.view = indicator;
-        [menu insertItem:recentLoaded atIndex:0];
-    }
-    self.statusItem.menu = menu;
-    menu.delegate = self;
-    if (isShowMenu) {
-        [self.statusItem popUpStatusItemMenu:menu];
+        [menu addItem:recentLoaded];
+        
+        [menu addItem:[NSMenuItem separatorItem]];
+        
+        /** 第三标题 */
+        NSMenuItem *aboutItem  = [[NSMenuItem alloc] initWithTitle:@"About iSimulators" action:@selector(appAbout:) keyEquivalent:@""];
+        aboutItem.tag = about_Tag;
+        aboutItem.target = self;
+        [menu addItem:aboutItem];
+        
+        NSMenuItem *prefeItem  = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(appPreferences:) keyEquivalent:@","];
+        prefeItem.target = self;
+        [menu addItem:prefeItem];
+        
+        [menu addItem:[NSMenuItem separatorItem]];
+        
+        /** 第四标题 */
+        NSMenuItem *quitItem  = [[NSMenuItem alloc] initWithTitle:@"Quit iSimulators" action:@selector(appQuit:) keyEquivalent:@"q"];
+        quitItem.target = self;
+        [menu addItem:quitItem];
+        
+        self.statusItem.menu = menu;
+        menu.delegate = self;
+        self.menu_main = menu;
     }
 }
 
@@ -93,88 +83,96 @@ NSInteger const recent_max = 5;
     /** 加载app数据 */
     [[SimulatorManager shareSimulatorManager] loadSimulators:^(NSArray<NSDictionary<NSString *,NSArray<S_Device *> *> *> *deviceList, NSArray<S_AppInfo *> *recentList) {
         
-        [self buildUI:^(NSMenu *menu) {
-            
-            NSInteger nextIndex = 0;
-            
-            if (deviceList.count && recentList.count) {
-                /** 第一标题 */
-                NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"Recent Apps"];
-                [menu insertItem:recentApps atIndex:nextIndex++];
-                /** 数据 */
-                for (NSInteger i=0; i<recentList.count; i++) {
-                    if (i == recent_max) {
-                        break;
-                    }
-                    S_AppInfo *app = recentList[i];
-                    ApplicationMenuItem *appItem = [[ApplicationMenuItem alloc] initWithApp:app withDetailText:app.deviceName];
-                    appItem.action = @selector(appOnClickInMenu:);
-                    appItem.target = self;
-                    appItem.representedObject = app;
-                    appItem.delegate = self;
-                    [menu insertItem:appItem atIndex:nextIndex++];
+        NSMenu *menu = self.menu_main;
+        
+        /** 删除旧数据 直到about_Tag */
+        for (NSMenuItem *item in menu.itemArray) {
+            if (item.tag == about_Tag) {
+                break;
+            }
+            [menu removeItem:item];
+        }
+        
+        NSInteger nextIndex = 0;
+        
+        if (deviceList.count && recentList.count) {
+            /** 第一标题 */
+            NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"Recent Apps"];
+            [menu insertItem:recentApps atIndex:nextIndex++];
+            /** 数据 */
+            for (NSInteger i=0; i<recentList.count; i++) {
+                if (i == recent_max) {
+                    break;
                 }
-                
-                [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
-                
-                /** 第二标题 */
-                for (NSDictionary *allDevice in deviceList) {
-                    for (NSString *version in allDevice) {
-                        
-                        NSMenuItem *simulators = [MainMenu createTipsItemWithTitle:[NSString stringWithFormat:@"%@ Simulators", version]];
-                        [menu insertItem:simulators atIndex:nextIndex++];
-                        
-                        BOOL isExistsDevice = NO;
-                        /** 设备 */
-                        NSArray *devics = allDevice[version];
-                        for (S_Device *device in devics) {
-                            if (device.appList.count) {
-                                NSMenuItem *deviceItem = [[DeviceMenuItem alloc] initWithDevice:device];
-                                deviceItem.action = @selector(revealInFileViewer:);
-                                deviceItem.target = self;
-                                deviceItem.representedObject = device;
-                                
-                                [menu insertItem:deviceItem atIndex:nextIndex++];
-                                
-                                NSMenu *subMenu = [NSMenu new];
-                                subMenu.delegate = self;
-                                NSMenuItem *titleItem = [MainMenu createTipsItemWithTitle:@"Applications"];
-                                [subMenu addItem:titleItem];
-                                for (S_AppInfo *app in device.appList) {
-                                    ApplicationMenuItem *appItem = [[ApplicationMenuItem alloc] initWithApp:app];
-                                    appItem.action = @selector(appOnClickInMenu:);
-                                    appItem.target = self;
-                                    appItem.representedObject = app;
-                                    appItem.delegate = self;
-                                    /** app菜单 */
-                                    [subMenu addItem:appItem];
-                                }
-                                [subMenu addItem:[NSMenuItem separatorItem]];
-                                /** Device Action */
-                                [self createDeviceActionsInMenu:subMenu device:device];
-                                
-                                [deviceItem setSubmenu:subMenu];
-                                
-                                isExistsDevice = YES;
-                            }
-                        }
-                        
-                        if (!isExistsDevice) {
-                            [menu removeItemAtIndex:--nextIndex];
-                        }
-                    }
-                }
-                /** 数据 */
-                [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
-                
-            } else {
-                /** 第一标题 */
-                NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"NO Simulators"];
-                [menu insertItem:recentApps atIndex:nextIndex++];
-                [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
+                S_AppInfo *app = recentList[i];
+                ApplicationMenuItem *appItem = [[ApplicationMenuItem alloc] initWithApp:app withDetailText:app.deviceName];
+                appItem.action = @selector(appOnClickInMenu:);
+                appItem.target = self;
+                appItem.representedObject = app;
+                appItem.delegate = self;
+                [menu insertItem:appItem atIndex:nextIndex++];
             }
             
-        }];
+            [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
+            
+            /** 第二标题 */
+            for (NSDictionary *allDevice in deviceList) {
+                for (NSString *version in allDevice) {
+                    
+                    NSMenuItem *simulators = [MainMenu createTipsItemWithTitle:[NSString stringWithFormat:@"%@ Simulators", version]];
+                    [menu insertItem:simulators atIndex:nextIndex++];
+                    
+                    BOOL isExistsDevice = NO;
+                    /** 设备 */
+                    NSArray *devics = allDevice[version];
+                    for (S_Device *device in devics) {
+                        if (device.appList.count) {
+                            NSMenuItem *deviceItem = [[DeviceMenuItem alloc] initWithDevice:device];
+                            deviceItem.action = @selector(revealInFileViewer:);
+                            deviceItem.target = self;
+                            deviceItem.representedObject = device;
+                            
+                            [menu insertItem:deviceItem atIndex:nextIndex++];
+                            
+                            NSMenu *subMenu = [NSMenu new];
+                            subMenu.delegate = self;
+                            NSMenuItem *titleItem = [MainMenu createTipsItemWithTitle:@"Applications"];
+                            [subMenu addItem:titleItem];
+                            for (S_AppInfo *app in device.appList) {
+                                ApplicationMenuItem *appItem = [[ApplicationMenuItem alloc] initWithApp:app];
+                                appItem.action = @selector(appOnClickInMenu:);
+                                appItem.target = self;
+                                appItem.representedObject = app;
+                                appItem.delegate = self;
+                                /** app菜单 */
+                                [subMenu addItem:appItem];
+                            }
+                            [subMenu addItem:[NSMenuItem separatorItem]];
+                            /** Device Action */
+                            [self createDeviceActionsInMenu:subMenu device:device];
+                            
+                            [deviceItem setSubmenu:subMenu];
+                            
+                            isExistsDevice = YES;
+                        }
+                    }
+                    
+                    if (!isExistsDevice) {
+                        [menu removeItemAtIndex:--nextIndex];
+                    }
+                }
+            }
+            /** 数据 */
+            [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
+            
+        } else {
+            /** 第一标题 */
+            NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"NO Simulators"];
+            [menu insertItem:recentApps atIndex:nextIndex++];
+            [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
+        }
+        
+        [menu update];
     }];
 }
 
@@ -208,20 +206,6 @@ NSInteger const recent_max = 5;
 - (void)applicationMenuItem:(ApplicationMenuItem *)appMenuItem uninstall:(S_AppInfo *)app
 {
     [[SimulatorManager shareSimulatorManager] uninstallAppInSimulator:app];
-}
-
-#pragma mark - NSMenuDelegate
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    if ([menu.title isEqualToString:mainMenuTitle]) {
-        _isShowMenu = YES;
-    }
-}
-- (void)menuDidClose:(NSMenu *)menu
-{
-    if ([menu.title isEqualToString:mainMenuTitle]) {
-        _isShowMenu = NO;
-    }
 }
 
 #pragma mark - MainMenuDelegate
