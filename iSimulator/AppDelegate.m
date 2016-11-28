@@ -8,11 +8,20 @@
 
 #import "AppDelegate.h"
 #import "MainMenu.h"
-#import "NSAlert+Block.h"
 
-@interface AppDelegate () <MainMenuDelegate>
+#import <Sparkle/Sparkle.h>
+
+#import "AboutWindownContorller.h"
+
+#import "NSUserDefaults+KeyPath.h"
+
+@interface AppDelegate () <MainMenuDelegate, SUUpdaterDelegate>
 
 @property (nonatomic, strong) MainMenu *menu;
+
+@property (nonatomic, strong) AboutWindownContorller *aboutWindowController;
+
+@property (nonatomic, nullable) NSWindowController *preferencesWindowController;
 
 @end
 
@@ -31,18 +40,43 @@
 #pragma mark - MainMenuDelegate
 - (void)mainMenuAboutApp:(MainMenu *)mainMenu
 {
-    NSAlert *alert = [[NSAlert alloc] initWithInfoTitle:@"关于" message:@"感谢你的使用。" cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert beginSheetModalForWindow:[[NSApplication sharedApplication] windows].firstObject completionHandler:nil];
+    if (_aboutWindowController == nil) {
+        _aboutWindowController = [[AboutWindownContorller alloc] initWithWindowNibName:@"AboutWindownContorller"];
+    }
+    [_aboutWindowController.window center];
+    
+    [_aboutWindowController.window orderFrontRegardless];
 }
 
 - (void)mainMenuPreferencesApp:(MainMenu *)mainMenu
 {
-    
+    if(_preferencesWindowController == nil)
+    {
+        _preferencesWindowController = [[NSStoryboard storyboardWithName:@"PreferencesStoryboard" bundle:nil] instantiateInitialController];
+    }
+    [_preferencesWindowController.window orderFrontRegardless];
 }
 
 - (void)mainMenuQuitApp:(MainMenu *)mainMenu
 {
     [NSApp terminate:self];
+}
+
+#pragma mark - Updater Delegate
+
+- (NSString *)feedURLStringForUpdater:(SUUpdater *)updater
+{
+    NSString *feedURLString = [NSBundle mainBundle].infoDictionary[@"SUFeedURL"];
+    NSAssert(feedURLString != nil, @"A feed URL should be set in Info.plist");
+    
+    if([NSUserDefaults isReleaseUpdatesEnabled])
+    {
+        NSString *lastComponent = feedURLString.lastPathComponent;
+        NSString *baseURLString = feedURLString.stringByDeletingLastPathComponent;
+        return [NSString stringWithFormat:@"%@/prerelease-%@", baseURLString, lastComponent];
+    }
+    
+    return feedURLString;
 }
 
 @end

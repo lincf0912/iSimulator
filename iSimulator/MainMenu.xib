@@ -14,5 +14,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="HBT-9t-OMg" customClass="AppDelegate"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="F9A-ty-7eA" customClass="SUUpdater">
+            <connections>
+                <outlet property="delegate" destination="HBT-9t-OMg" id="RGv-vH-bI4"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

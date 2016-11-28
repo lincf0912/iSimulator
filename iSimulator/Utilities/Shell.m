@@ -30,7 +30,7 @@ NSString * shell(NSString *launchPath ,NSArray<NSString *> *arguments)
         }
         
         //0 成功， 1 失败
-//        printf("resultStr is %s\n", [resultStr UTF8String]);
+        printf("resultStr is %s\n", [resultStr UTF8String]);
         return resultStr;
     }
     return @"";

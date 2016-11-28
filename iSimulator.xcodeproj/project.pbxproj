@@ -21,11 +21,19 @@
 		6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D391DD086C8005160D0 /* Shell.m */; };
 		6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */; };
 		6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEFA1DDAA71500BB307D /* OpenFinder.m */; };
-		6F37A72D1DDAB76A00D3A7E3 /* NSAlert+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F37A72C1DDAB76A00D3A7E3 /* NSAlert+Block.m */; };
+		6F32A5821DE82EFC00FEA1B7 /* AboutWindownContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A57C1DE82EFC00FEA1B7 /* AboutWindownContorller.m */; };
+		6F32A5831DE82EFC00FEA1B7 /* AboutWindownContorller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */; };
+		6F32A5841DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A5811DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard */; };
+		6F32A5871DE830A200FEA1B7 /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5861DE830A200FEA1B7 /* GeneralViewController.m */; };
+		6F32A58A1DE830B400FEA1B7 /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */; };
+		6F32A5941DEBC47E00FEA1B7 /* UpdateOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */; };
+		6F32A5971DEBCC0D00FEA1B7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; };
+		6F32A59A1DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5991DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m */; };
 		6F4627031DD00B9300355984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627021DD00B9300355984 /* AppDelegate.m */; };
 		6F4627061DD00B9300355984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627051DD00B9300355984 /* main.m */; };
 		6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F46270A1DD00B9300355984 /* Assets.xcassets */; };
 		6F46271A1DD016C700355984 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F4627191DD016C700355984 /* MainMenu.xib */; };
+		6F5BA5011DE8059700F26951 /* NSAlert+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5BA5001DE8059700F26951 /* NSAlert+Block.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +65,19 @@
 		6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iActivityIndicatorView.m; sourceTree = "<group>"; };
 		6F31FEF91DDAA71500BB307D /* OpenFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenFinder.h; sourceTree = "<group>"; };
 		6F31FEFA1DDAA71500BB307D /* OpenFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenFinder.m; sourceTree = "<group>"; };
-		6F37A72B1DDAB76A00D3A7E3 /* NSAlert+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+Block.h"; sourceTree = "<group>"; };
-		6F37A72C1DDAB76A00D3A7E3 /* NSAlert+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+Block.m"; sourceTree = "<group>"; };
+		6F32A57B1DE82EFC00FEA1B7 /* AboutWindownContorller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindownContorller.h; sourceTree = "<group>"; };
+		6F32A57C1DE82EFC00FEA1B7 /* AboutWindownContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindownContorller.m; sourceTree = "<group>"; };
+		6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindownContorller.xib; sourceTree = "<group>"; };
+		6F32A5811DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PreferencesStoryboard.storyboard; sourceTree = "<group>"; };
+		6F32A5851DE830A200FEA1B7 /* GeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralViewController.h; sourceTree = "<group>"; };
+		6F32A5861DE830A200FEA1B7 /* GeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralViewController.m; sourceTree = "<group>"; };
+		6F32A5881DE830B400FEA1B7 /* AdvancedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedViewController.h; sourceTree = "<group>"; };
+		6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedViewController.m; sourceTree = "<group>"; };
+		6F32A5921DEBC47E00FEA1B7 /* UpdateOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOption.h; sourceTree = "<group>"; };
+		6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOption.m; sourceTree = "<group>"; };
+		6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		6F32A5981DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+KeyPath.h"; sourceTree = "<group>"; };
+		6F32A5991DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+KeyPath.m"; sourceTree = "<group>"; };
 		6F4626FE1DD00B9300355984 /* iSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4627011DD00B9300355984 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6F4627021DD00B9300355984 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,6 +85,8 @@
 		6F46270A1DD00B9300355984 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F46270F1DD00B9300355984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F4627191DD016C700355984 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		6F5BA4FF1DE8059700F26951 /* NSAlert+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+Block.h"; sourceTree = "<group>"; };
+		6F5BA5001DE8059700F26951 /* NSAlert+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+Block.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F32A5971DEBCC0D00FEA1B7 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +108,10 @@
 				6F1D5FD81DD321700056ED24 /* NSImage+Addition.m */,
 				6F1D606C1DD557AC0056ED24 /* NSNumber+Addition.h */,
 				6F1D606D1DD557AC0056ED24 /* NSNumber+Addition.m */,
-				6F37A72B1DDAB76A00D3A7E3 /* NSAlert+Block.h */,
-				6F37A72C1DDAB76A00D3A7E3 /* NSAlert+Block.m */,
+				6F5BA4FF1DE8059700F26951 /* NSAlert+Block.h */,
+				6F5BA5001DE8059700F26951 /* NSAlert+Block.m */,
+				6F32A5981DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.h */,
+				6F32A5991DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -112,6 +136,8 @@
 				6F1E0D2C1DD07813005160D0 /* S_AppInfo.m */,
 				6F1E0D2E1DD07900005160D0 /* S_Device.h */,
 				6F1E0D2F1DD07900005160D0 /* S_Device.m */,
+				6F32A5921DEBC47E00FEA1B7 /* UpdateOption.h */,
+				6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,11 +175,58 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6F32A57A1DE82EFC00FEA1B7 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				6F32A57B1DE82EFC00FEA1B7 /* AboutWindownContorller.h */,
+				6F32A57C1DE82EFC00FEA1B7 /* AboutWindownContorller.m */,
+				6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		6F32A57E1DE82EFC00FEA1B7 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				6F32A5811DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard */,
+				6F32A5801DE82EFC00FEA1B7 /* General */,
+				6F32A57F1DE82EFC00FEA1B7 /* Advanced */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		6F32A57F1DE82EFC00FEA1B7 /* Advanced */ = {
+			isa = PBXGroup;
+			children = (
+				6F32A5881DE830B400FEA1B7 /* AdvancedViewController.h */,
+				6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */,
+			);
+			path = Advanced;
+			sourceTree = "<group>";
+		};
+		6F32A5801DE82EFC00FEA1B7 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				6F32A5851DE830A200FEA1B7 /* GeneralViewController.h */,
+				6F32A5861DE830A200FEA1B7 /* GeneralViewController.m */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		6F32A5951DEBCC0D00FEA1B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6F4626F51DD00B9300355984 = {
 			isa = PBXGroup;
 			children = (
 				6F4627001DD00B9300355984 /* iSimulator */,
 				6F4626FF1DD00B9300355984 /* Products */,
+				6F32A5951DEBCC0D00FEA1B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +247,7 @@
 				6F1E0D241DD071E2005160D0 /* Utilities */,
 				6F1E0D3B1DD1657E005160D0 /* View */,
 				6F1D60651DD473D90056ED24 /* NSObject */,
+				6F5BA4F01DE7D64600F26951 /* Window */,
 				6F4627011DD00B9300355984 /* AppDelegate.h */,
 				6F4627021DD00B9300355984 /* AppDelegate.m */,
 				6F1E0CC71DD02BD3005160D0 /* MainMenu.h */,
@@ -192,6 +266,15 @@
 				6F4627051DD00B9300355984 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6F5BA4F01DE7D64600F26951 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				6F32A57A1DE82EFC00FEA1B7 /* About */,
+				6F32A57E1DE82EFC00FEA1B7 /* Preferences */,
+			);
+			path = Window;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +336,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F32A5841DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard in Resources */,
 				6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */,
 				6F46271A1DD016C700355984 /* MainMenu.xib in Resources */,
+				6F32A5831DE82EFC00FEA1B7 /* AboutWindownContorller.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,20 +350,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F32A58A1DE830B400FEA1B7 /* AdvancedViewController.m in Sources */,
 				6F4627061DD00B9300355984 /* main.m in Sources */,
-				6F37A72D1DDAB76A00D3A7E3 /* NSAlert+Block.m in Sources */,
 				6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */,
 				6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */,
 				6F1E0D301DD07900005160D0 /* S_Device.m in Sources */,
 				6F4627031DD00B9300355984 /* AppDelegate.m in Sources */,
 				6F1E0D2D1DD07813005160D0 /* S_AppInfo.m in Sources */,
 				6F1D60711DD56EFA0056ED24 /* SimulatorMonitor.m in Sources */,
+				6F32A59A1DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m in Sources */,
 				6F1D5FD91DD321700056ED24 /* NSImage+Addition.m in Sources */,
+				6F32A5871DE830A200FEA1B7 /* GeneralViewController.m in Sources */,
 				6F1E0D371DD07D4C005160D0 /* URLContent.m in Sources */,
 				6F1D606E1DD557AC0056ED24 /* NSNumber+Addition.m in Sources */,
+				6F32A5821DE82EFC00FEA1B7 /* AboutWindownContorller.m in Sources */,
 				6F1E0D2A1DD077BC005160D0 /* BaseModel.m in Sources */,
 				6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */,
 				6F1D606B1DD47A720056ED24 /* ApplicationMenuItem.m in Sources */,
+				6F32A5941DEBC47E00FEA1B7 /* UpdateOption.m in Sources */,
+				6F5BA5011DE8059700F26951 /* NSAlert+Block.m in Sources */,
 				6F1E0CC91DD02BD3005160D0 /* MainMenu.m in Sources */,
 				6F1D60681DD473F80056ED24 /* DeviceMenuItem.m in Sources */,
 				6F1E0D341DD0799C005160D0 /* SimulatorManager.m in Sources */,
@@ -382,6 +472,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3VDRUN62M8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miracle..iSimulator;
@@ -396,6 +490,10 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3VDRUN62M8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miracle..iSimulator;
