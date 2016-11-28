@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class UpdateOption;
 
 @interface NSUserDefaults (KeyPath)
+/** 版本更新间隔 */
++ (NSInteger)updateOptionDesc;
++ (UpdateOption *)updateOption;
++ (void)setUpdateOption:(UpdateOption *)updateOption;
 
-+ (BOOL)isReleaseUpdatesEnabled;
-+ (void)setIsReleaseUpdatesEnabled:(BOOL)isReleaseUpdatesEnabled;
 @end

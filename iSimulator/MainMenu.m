@@ -90,7 +90,9 @@ NSInteger const about_Tag = 990;
             if (item.tag == about_Tag) {
                 break;
             }
-            [menu removeItem:item];
+            if (item.menu) {
+                [menu removeItem:item];
+            }
         }
         
         NSInteger nextIndex = 0;

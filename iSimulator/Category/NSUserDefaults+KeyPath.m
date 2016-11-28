@@ -7,19 +7,47 @@
 //
 
 #import "NSUserDefaults+KeyPath.h"
+#import "UpdateOption.h"
 
-NSString *const isReleaseUpdatesEnabledName = @"isReleaseUpdatesEnabled";
+NSString *const UpdateOptionName = @"UpdateOption";
 
 @implementation NSUserDefaults (KeyPath)
 
-+ (BOOL)isReleaseUpdatesEnabled
++ (UpdateOption *)updateOption
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:isReleaseUpdatesEnabledName];
+    NSInteger updateCheckInterval = [self updateOptionDesc];
+    updateOperationType type = updateOperationType_everyDay;
+    if (updateCheckInterval == 1) {
+        type = updateOperationType_everyDay;
+    } else if (updateCheckInterval == 7) {
+        type = updateOperationType_everyWeek;
+    } else if (updateCheckInterval == 30) {
+        type = updateOperationType_everyMonth;
+    }
+    return UpdateOptionForOperation(type);
 }
 
-+ (void)setIsReleaseUpdatesEnabled:(BOOL)isReleaseUpdatesEnabled
++ (NSInteger)updateOptionDesc
 {
-    [[NSUserDefaults standardUserDefaults] setBool:isReleaseUpdatesEnabled forKey:isReleaseUpdatesEnabledName];
+    NSInteger updateCheckInterval = [[NSUserDefaults standardUserDefaults] integerForKey:UpdateOptionName];
+    return updateCheckInterval == 0 ? 1 : updateCheckInterval;
+}
+
++ (void)setUpdateOption:(UpdateOption *)updateOption
+{
+    NSInteger updateCheckInterval = 1;
+    switch (updateOption.type) {
+        case updateOperationType_everyDay:
+            updateCheckInterval = 1;
+            break;
+        case updateOperationType_everyWeek:
+            updateCheckInterval = 7;
+            break;
+        case updateOperationType_everyMonth:
+            updateCheckInterval = 30;
+            break;
+    }
+    [[NSUserDefaults standardUserDefaults] setInteger:updateCheckInterval forKey:UpdateOptionName];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

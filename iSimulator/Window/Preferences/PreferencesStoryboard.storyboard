@@ -124,9 +124,9 @@
                                         </items>
                                     </menu>
                                     <connections>
+                                        <binding destination="rmQ-te-eNr" name="contentValues" keyPath="self.selectedUpdateOption.localizedTitle" previousBinding="X9W-vr-OkH" id="IB8-a1-YJa"/>
+                                        <binding destination="rmQ-te-eNr" name="selectedObject" keyPath="self.selectedUpdateOption" previousBinding="IB8-a1-YJa" id="fds-pj-tV9"/>
                                         <binding destination="rmQ-te-eNr" name="content" keyPath="self.updateOptions" id="X9W-vr-OkH"/>
-                                        <binding destination="rmQ-te-eNr" name="contentValues" keyPath="self.selectedUpdateOption.localizedTitle" previousBinding="X9W-vr-OkH" id="t86-iB-39o"/>
-                                        <binding destination="rmQ-te-eNr" name="selectedObject" keyPath="self.selectedUpdateOption" previousBinding="t86-iB-39o" id="jHp-Kq-jfc"/>
                                     </connections>
                                 </popUpButtonCell>
                             </popUpButton>

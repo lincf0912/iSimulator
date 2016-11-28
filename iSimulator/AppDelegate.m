@@ -11,9 +11,10 @@
 
 #import <Sparkle/Sparkle.h>
 
-#import "AboutWindownContorller.h"
-
 #import "NSUserDefaults+KeyPath.h"
+#import "NSDate+common.h"
+
+#import "AboutWindownContorller.h"
 
 @interface AppDelegate () <MainMenuDelegate, SUUpdaterDelegate>
 
@@ -32,6 +33,16 @@
     self.menu = [MainMenu new];
     self.menu.itemDelegate = self;
     [self.menu start];
+    
+    [[SUUpdater sharedUpdater] setSendsSystemProfile:YES];
+    /** 版本更新 */
+    NSInteger updateCheckInterval = [NSUserDefaults updateOptionDesc];
+    NSDate *lastUpdateCheckDate = [[SUUpdater sharedUpdater] lastUpdateCheckDate];
+    NSInteger days = [[NSDate date] daysDifferentFromOtherDate:lastUpdateCheckDate];
+    if (days >= updateCheckInterval) {
+        [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
+    }
+    
 }
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
@@ -40,26 +51,30 @@
 #pragma mark - MainMenuDelegate
 - (void)mainMenuAboutApp:(MainMenu *)mainMenu
 {
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     if (_aboutWindowController == nil) {
         _aboutWindowController = [[AboutWindownContorller alloc] initWithWindowNibName:@"AboutWindownContorller"];
     }
-    [_aboutWindowController.window center];
+//    [_aboutWindowController.window center];
+//    [_aboutWindowController.window orderFrontRegardless];
     
-    [_aboutWindowController.window orderFrontRegardless];
+    [_aboutWindowController showWindow:self];
 }
 
 - (void)mainMenuPreferencesApp:(MainMenu *)mainMenu
 {
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     if(_preferencesWindowController == nil)
     {
         _preferencesWindowController = [[NSStoryboard storyboardWithName:@"PreferencesStoryboard" bundle:nil] instantiateInitialController];
     }
-    [_preferencesWindowController.window orderFrontRegardless];
+    
+    [_preferencesWindowController showWindow:self];
 }
 
 - (void)mainMenuQuitApp:(MainMenu *)mainMenu
 {
-    [NSApp terminate:self];
+    [NSApp terminate:self]; 
 }
 
 #pragma mark - Updater Delegate

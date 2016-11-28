@@ -8,6 +8,7 @@
 
 #import "AdvancedViewController.h"
 #import "UpdateOption.h"
+#import "NSUserDefaults+KeyPath.h"
 
 @interface AdvancedViewController ()
 
@@ -35,12 +36,13 @@
 
 - (UpdateOption *)selectedUpdateOption
 {
-    return UpdateOptionForOperation(updateOperationType_everyDay);
+    return [NSUserDefaults updateOption];
 }
 
 - (void)setSelectedUpdateOption:(UpdateOption *)selectedUpdateOption
 {
     [self willChangeValueForKey:@"selectedUpdateOption"];
+    [NSUserDefaults setUpdateOption:selectedUpdateOption];
     [self didChangeValueForKey:@"selectedUpdateOption"];
 }
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GeneralViewController.h"
+#import "LoginItemsRegistry.h"
 
 NSString *const startAtLoginName = @"iSimulator_startLogin";
 
@@ -61,17 +62,17 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
 
 - (void)addToLoginItems
 {
-    
+    [LoginItemsRegistry installLoginRegistry];
 }
 
 - (void)removeFromLoginItems
 {
-    
+    [LoginItemsRegistry unInstallLoginRegistry];
 }
 
 - (BOOL)isStartAtLogin
 {
-    return NO;
+    return [LoginItemsRegistry isLoginRegistry];
 }
 
 @end

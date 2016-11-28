@@ -28,13 +28,30 @@
 		6F32A58A1DE830B400FEA1B7 /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */; };
 		6F32A5941DEBC47E00FEA1B7 /* UpdateOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */; };
 		6F32A5971DEBCC0D00FEA1B7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; };
-		6F32A59A1DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5991DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m */; };
+		6F32A5A01DEBE43A00FEA1B7 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F4627031DD00B9300355984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627021DD00B9300355984 /* AppDelegate.m */; };
 		6F4627061DD00B9300355984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627051DD00B9300355984 /* main.m */; };
 		6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F46270A1DD00B9300355984 /* Assets.xcassets */; };
 		6F46271A1DD016C700355984 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F4627191DD016C700355984 /* MainMenu.xib */; };
 		6F5BA5011DE8059700F26951 /* NSAlert+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5BA5001DE8059700F26951 /* NSAlert+Block.m */; };
+		6FB9C2CF1DEC018A00616765 /* NSUserDefaults+KeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB9C2CE1DEC018A00616765 /* NSUserDefaults+KeyPath.m */; };
+		6FB9C2D41DEC075700616765 /* NSDate+common.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB9C2D31DEC075700616765 /* NSDate+common.m */; };
+		6FB9C2D71DEC092500616765 /* LoginItemsRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB9C2D61DEC092500616765 /* LoginItemsRegistry.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6F32A59F1DEBE42A00FEA1B7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6F32A5A01DEBE43A00FEA1B7 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6F1D5FD71DD321700056ED24 /* NSImage+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Addition.h"; sourceTree = "<group>"; };
@@ -76,8 +93,6 @@
 		6F32A5921DEBC47E00FEA1B7 /* UpdateOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOption.h; sourceTree = "<group>"; };
 		6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOption.m; sourceTree = "<group>"; };
 		6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		6F32A5981DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+KeyPath.h"; sourceTree = "<group>"; };
-		6F32A5991DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+KeyPath.m"; sourceTree = "<group>"; };
 		6F4626FE1DD00B9300355984 /* iSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4627011DD00B9300355984 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6F4627021DD00B9300355984 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +102,12 @@
 		6F4627191DD016C700355984 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		6F5BA4FF1DE8059700F26951 /* NSAlert+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+Block.h"; sourceTree = "<group>"; };
 		6F5BA5001DE8059700F26951 /* NSAlert+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+Block.m"; sourceTree = "<group>"; };
+		6FB9C2CD1DEC018A00616765 /* NSUserDefaults+KeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+KeyPath.h"; sourceTree = "<group>"; };
+		6FB9C2CE1DEC018A00616765 /* NSUserDefaults+KeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+KeyPath.m"; sourceTree = "<group>"; };
+		6FB9C2D21DEC075700616765 /* NSDate+common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+common.h"; sourceTree = "<group>"; };
+		6FB9C2D31DEC075700616765 /* NSDate+common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+common.m"; sourceTree = "<group>"; };
+		6FB9C2D51DEC092500616765 /* LoginItemsRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsRegistry.h; sourceTree = "<group>"; };
+		6FB9C2D61DEC092500616765 /* LoginItemsRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItemsRegistry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +131,10 @@
 				6F1D606D1DD557AC0056ED24 /* NSNumber+Addition.m */,
 				6F5BA4FF1DE8059700F26951 /* NSAlert+Block.h */,
 				6F5BA5001DE8059700F26951 /* NSAlert+Block.m */,
-				6F32A5981DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.h */,
-				6F32A5991DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m */,
+				6FB9C2CD1DEC018A00616765 /* NSUserDefaults+KeyPath.h */,
+				6FB9C2CE1DEC018A00616765 /* NSUserDefaults+KeyPath.m */,
+				6FB9C2D21DEC075700616765 /* NSDate+common.h */,
+				6FB9C2D31DEC075700616765 /* NSDate+common.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -153,6 +176,8 @@
 				6F1E0D391DD086C8005160D0 /* Shell.m */,
 				6F31FEF91DDAA71500BB307D /* OpenFinder.h */,
 				6F31FEFA1DDAA71500BB307D /* OpenFinder.m */,
+				6FB9C2D51DEC092500616765 /* LoginItemsRegistry.h */,
+				6FB9C2D61DEC092500616765 /* LoginItemsRegistry.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -287,6 +312,7 @@
 				6F4626FA1DD00B9300355984 /* Sources */,
 				6F4626FB1DD00B9300355984 /* Frameworks */,
 				6F4626FC1DD00B9300355984 /* Resources */,
+				6F32A59F1DEBE42A00FEA1B7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,12 +379,13 @@
 				6F32A58A1DE830B400FEA1B7 /* AdvancedViewController.m in Sources */,
 				6F4627061DD00B9300355984 /* main.m in Sources */,
 				6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */,
+				6FB9C2D71DEC092500616765 /* LoginItemsRegistry.m in Sources */,
 				6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */,
 				6F1E0D301DD07900005160D0 /* S_Device.m in Sources */,
 				6F4627031DD00B9300355984 /* AppDelegate.m in Sources */,
 				6F1E0D2D1DD07813005160D0 /* S_AppInfo.m in Sources */,
 				6F1D60711DD56EFA0056ED24 /* SimulatorMonitor.m in Sources */,
-				6F32A59A1DEBCD2C00FEA1B7 /* NSUserDefaults+KeyPath.m in Sources */,
+				6FB9C2CF1DEC018A00616765 /* NSUserDefaults+KeyPath.m in Sources */,
 				6F1D5FD91DD321700056ED24 /* NSImage+Addition.m in Sources */,
 				6F32A5871DE830A200FEA1B7 /* GeneralViewController.m in Sources */,
 				6F1E0D371DD07D4C005160D0 /* URLContent.m in Sources */,
@@ -367,6 +394,7 @@
 				6F1E0D2A1DD077BC005160D0 /* BaseModel.m in Sources */,
 				6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */,
 				6F1D606B1DD47A720056ED24 /* ApplicationMenuItem.m in Sources */,
+				6FB9C2D41DEC075700616765 /* NSDate+common.m in Sources */,
 				6F32A5941DEBC47E00FEA1B7 /* UpdateOption.m in Sources */,
 				6F5BA5011DE8059700F26951 /* NSAlert+Block.m in Sources */,
 				6F1E0CC91DD02BD3005160D0 /* MainMenu.m in Sources */,
