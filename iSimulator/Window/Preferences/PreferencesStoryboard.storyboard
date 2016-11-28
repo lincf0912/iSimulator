@@ -10,9 +10,9 @@
         <scene sceneID="wJv-tW-njN">
             <objects>
                 <windowController id="g1X-mU-pNk" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="LRz-Bu-UX1">
+                    <window key="window" title="iSimulator Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="LRz-Bu-UX1">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowCollectionBehavior key="collectionBehavior" managed="YES" participatesInCycle="YES" fullScreenPrimary="YES" fullScreenAllowsTiling="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" managed="YES" participatesInCycle="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="154" y="368" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
@@ -124,8 +124,8 @@
                                         </items>
                                     </menu>
                                     <connections>
-                                        <binding destination="rmQ-te-eNr" name="contentValues" keyPath="self.selectedUpdateOption.localizedTitle" previousBinding="X9W-vr-OkH" id="IB8-a1-YJa"/>
                                         <binding destination="rmQ-te-eNr" name="selectedObject" keyPath="self.selectedUpdateOption" previousBinding="IB8-a1-YJa" id="fds-pj-tV9"/>
+                                        <binding destination="rmQ-te-eNr" name="contentValues" keyPath="self.selectedUpdateOption.localizedTitle" previousBinding="X9W-vr-OkH" id="IB8-a1-YJa"/>
                                         <binding destination="rmQ-te-eNr" name="content" keyPath="self.updateOptions" id="X9W-vr-OkH"/>
                                     </connections>
                                 </popUpButtonCell>
