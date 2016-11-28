@@ -69,13 +69,6 @@
     NSString *feedURLString = [NSBundle mainBundle].infoDictionary[@"SUFeedURL"];
     NSAssert(feedURLString != nil, @"A feed URL should be set in Info.plist");
     
-    if([NSUserDefaults isReleaseUpdatesEnabled])
-    {
-        NSString *lastComponent = feedURLString.lastPathComponent;
-        NSString *baseURLString = feedURLString.stringByDeletingLastPathComponent;
-        return [NSString stringWithFormat:@"%@/prerelease-%@", baseURLString, lastComponent];
-    }
-    
     return feedURLString;
 }
 

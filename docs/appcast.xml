@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>iSimulator Changelog</title>
+		<link>https://lincf0912.github.io/iSimulator/appcast.xml</link>
+		<description>The most recent changes for iSimulator.</description>
+		<language>en</language>
+		<item>
+			<title><![CDATA[Version 1.1.0: Preferences Update]]></title>
+			<description><![CDATA[<ul>
+<li>修复部分操作监听文件夹没有回调的问题</li>
+<li>新增关于、偏好设置UI</li>
+<li>加入自动更新计划</li>
+</ul>
+]]></description>
+			<pubDate>Sat, 16 Apr 2016 12:00:00 GMT</pubDate>
+			<enclosure url="https://github.com/newmarcel/KeepingYouAwake/releases/download/1.1.0/iSimulator-1.1.0.zip" length="1591141" type="application/octet-stream" sparkle:version="110" sparkle:shortVersionString="1.1.0">
+			</enclosure>
+		</item>
+	</channel>
+</rss>
