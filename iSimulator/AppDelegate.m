@@ -51,7 +51,7 @@
 #pragma mark - MainMenuDelegate
 - (void)mainMenuAboutApp:(MainMenu *)mainMenu
 {
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    [NSApp activateIgnoringOtherApps:YES];
     if (_aboutWindowController == nil) {
         _aboutWindowController = [[AboutWindownContorller alloc] initWithWindowNibName:@"AboutWindownContorller"];
     }
@@ -63,10 +63,11 @@
 
 - (void)mainMenuPreferencesApp:(MainMenu *)mainMenu
 {
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    [NSApp activateIgnoringOtherApps:YES];
     if(_preferencesWindowController == nil)
     {
         _preferencesWindowController = [[NSStoryboard storyboardWithName:@"PreferencesStoryboard" bundle:nil] instantiateInitialController];
+        [_preferencesWindowController.window setFrameOrigin:NSMakePoint(0, [NSScreen mainScreen].frame.size.height)];
     }
     
     [_preferencesWindowController showWindow:self];

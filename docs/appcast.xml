@@ -5,6 +5,18 @@
 		<link>https://lincf0912.github.io/iSimulator/appcast.xml</link>
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
+        <item>
+            <title><![CDATA[Version 1.2: 功能完善]]></title>
+            <description><![CDATA[<ul>
+                <li>新增粘贴板共享功能</li>
+                <li>新增功能友好提示</li>
+                <li>完善功能</li>
+                </ul>
+            ]]></description>
+            <pubDate>2016-12-02 17:10:44 GMT</pubDate>
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/1.2/iSimulator-1.2.zip" length="3549023" type="application/octet-stream" sparkle:version="12" sparkle:shortVersionString="1.2">
+            </enclosure>
+        </item>
 		<item>
 			<title><![CDATA[Version 1.1.0: Preferences Update]]></title>
 			<description><![CDATA[<ul>

@@ -247,7 +247,7 @@ NSInteger const about_Tag = 990;
 }
 - (void)installApplication:(NSMenuItem *)item
 {
-    [[SimulatorManager shareSimulatorManager] installAppInSimulator:item.representedObject];
+    [[SimulatorManager shareSimulatorManager] installAppInDevice:item.representedObject];
 }
 - (void)resetContentAndSettings:(NSMenuItem *)item
 {
@@ -261,10 +261,18 @@ NSInteger const about_Tag = 990;
                owner:self];
     [pb setString:deviceURL.path forType:NSStringPboardType];
 }
+- (void)PasteboardSyncToMac:(NSMenuItem *)item
+{
+    [[SimulatorManager shareSimulatorManager] pbsyncDevice:item.representedObject ToHost:YES];
+}
+- (void)PasteboardSyncToSimulator:(NSMenuItem *)item
+{
+    [[SimulatorManager shareSimulatorManager] pbsyncDevice:item.representedObject ToHost:NO];
+}
+
 - (void)uninstall:(NSMenuItem *)item
 {
-    NSURL *deviceURL = [[SimulatorManager shareSimulatorManager] getDeviceUrl:item.representedObject];
-    [[NSFileManager defaultManager] removeItemAtURL:deviceURL error:nil];
+    [[SimulatorManager shareSimulatorManager] deleteDevice:item.representedObject];
 }
 
 #pragma mark - 私有
@@ -297,6 +305,14 @@ NSInteger const about_Tag = 990;
     copy.target = self;
     copy.representedObject = device;
     copy.image = [NSImage imageNamed:@"copy"];
+    NSMenuItem *pbSync1 = [menu addItemWithTitle:@"Sync Clipboard to Mac" action:@selector(PasteboardSyncToMac:) keyEquivalent:@""];
+    pbSync1.target = self;
+    pbSync1.representedObject = device;
+    pbSync1.image = [NSImage imageNamed:@"pbSync1"];
+    NSMenuItem *pbSync2 = [menu addItemWithTitle:@"Sync Clipboard to Simulator" action:@selector(PasteboardSyncToSimulator:) keyEquivalent:@""];
+    pbSync2.target = self;
+    pbSync2.representedObject = device;
+    pbSync2.image = [NSImage imageNamed:@"pbSync2"];
     
     if (device.isUnavailable) {
         NSMenuItem *uninstall = [menu addItemWithTitle:@"Uninstall..." action:@selector(uninstall:) keyEquivalent:@""];

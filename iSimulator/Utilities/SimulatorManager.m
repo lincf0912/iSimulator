@@ -11,6 +11,8 @@
 #import "URLContent.h"
 #import "Shell.h"
 
+#import "NSAlert+Block.h"
+
 #import "OpenFinder.h"
 
 #import "S_AppInfo.h"
@@ -212,8 +214,21 @@
 
 - (void)resetDeviceData:(S_Device *)device
 {
-    /** 需要先shutdown 但shutdown会导致模拟器卡死 */
-    shell(@"xcrun simctl erase ", @[device.UDID]);
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to reset the Simulator content and settings?" message:@"All installed applications, content, and settings will be moved to the trash. This process may take a few moment, please be patient." cancelButtonTitle:@"Don't Reset" otherButtonTitles:@"Reset"];
+    [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != abs(NSModalResponseStop)) {
+            /** 需要先shutdown 但shutdown会导致模拟器卡死 */
+            shell(@"xcrun simctl shutdown ", @[device.UDID]);
+            sleep(0.5);
+            shell(@"xcrun simctl erase ", @[device.UDID]);
+            sleep(0.5);
+            shell(@"killAll Simulator", nil);
+            sleep(0.5);
+//            shell(@"open -a \"Simulator.app\" --args -CurrentDeviceUDID ", @[device.UDID]);
+            shell(@"xcrun instruments -w ", @[device.UDID]);
+//            shell(@"xcrun simctl boot ", @[device.UDID]);
+        }
+    }];
 }
 
 - (void)addPhotoToDevice:(S_Device *)device
@@ -246,13 +261,35 @@
     }];
 }
 
-- (void)installAppInSimulator:(S_Device *)device
+- (void)installAppInDevice:(S_Device *)device
 {
     [OpenFinder selectFile:@[@"app"] complete:^(NSURL *url) {
         //xcrun simctl install booted <path>
         shell(@"xcrun simctl install booted ", @[[NSString stringWithFormat:@"\"%@\"", url.path]]);
     }];
 }
+
+- (void)deleteDevice:(S_Device *)device
+{
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to delete the Simulator?" message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Don't Delete" otherButtonTitles:@"Delete"];
+    [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != abs(NSModalResponseStop)) {
+            shell(@"xcrun simctl delete ", @[device.UDID]);
+            NSURL *deviceURL = [self getDeviceUrl:device];
+            [[NSFileManager defaultManager] removeItemAtURL:deviceURL error:nil];
+        }
+    }];
+}
+
+- (void)pbsyncDevice:(S_Device *)device ToHost:(BOOL)toHost
+{
+    if (toHost) {
+        shell(@"xcrun simctl pbsync ", @[device.UDID, @"host"]);
+    } else {
+        shell(@"xcrun simctl pbsync ", @[@"host", device.UDID]);
+    }
+}
+
 #pragma mark - 应用
 
 - (NSURL *)getAppDocumentUrl:(S_AppInfo *)appInfo
@@ -287,22 +324,38 @@
 
 - (void)resetAppDataInSimulator:(S_AppInfo *)appInfo
 {
-    NSURL *appUrl = [self getAppDocumentUrl:appInfo];
-    if (appUrl) {
-        shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Documents/*"]]);
-        shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Library/*"]]);
-        shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"tmp/*"]]);
-    }
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to reset the Application Data?" message:@"Documents, Library, and tmp will be moved to the trash. This process may take a few moment, please be patient." cancelButtonTitle:@"Don't ResetApp" otherButtonTitles:@"ResetApp"];
+    [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != abs(NSModalResponseStop)) {
+            NSURL *appUrl = [self getAppDocumentUrl:appInfo];
+            if (appUrl) {
+                shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Documents/*"]]);
+                shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Library/*"]]);
+                shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"tmp/*"]]);
+            }
+        }
+    }];
 }
 - (void)launchAppInSimulator:(S_AppInfo *)appInfo
 {
-    shell(@"open -a \"Simulator.app\" --args -CurrentDeviceUDID ", @[appInfo.UDID]);
+    shell(@"xcrun instruments -w ", @[appInfo.UDID]);
+    
+    while (![shell(@"xcrun simctl getenv ", @[appInfo.UDID, appInfo.deviceName]) isEqualToString:@"(null)"]) {
+        sleep(2);
+    }
     shell(@"xcrun simctl launch booted ", @[appInfo.bundleId]);
 }
 
 - (void)uninstallAppInSimulator:(S_AppInfo *)appInfo
 {
-    shell(@"xcrun simctl uninstall booted ", @[appInfo.bundleId]);
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to uninstall the Application?" message:[NSString stringWithFormat:@"the %@ application will be uninstall from the device.", appInfo.bundleDisplayName] cancelButtonTitle:@"Don't Uninstall" otherButtonTitles:@"Uninstall"];
+    [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != abs(NSModalResponseStop)) {
+            shell(@"xcrun simctl terminate ", @[appInfo.UDID, appInfo.bundleId]);
+            sleep(1);
+            shell(@"xcrun simctl uninstall booted ", @[appInfo.bundleId]);
+        }
+    }];
 }
 
 @end

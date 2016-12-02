@@ -31,7 +31,11 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 /** 添加视频到设备 */
 - (void)addVideoToDevice:(S_Device *)device;
 /** 安装模拟器应用 */
-- (void)installAppInSimulator:(S_Device *)device;
+- (void)installAppInDevice:(S_Device *)device;
+/** 删除模拟器 */
+- (void)deleteDevice:(S_Device *)device;
+/** 同步粘贴板 */
+- (void)pbsyncDevice:(S_Device *)device ToHost:(BOOL)toHost;
 
 //========================分割线====================
 

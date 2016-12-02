@@ -14,7 +14,7 @@ NSString * shell(NSString *launchPath ,NSArray<NSString *> *arguments)
         FILE* fp = NULL;
         char cmd[512];
         NSString *resultStr = @"";
-        sprintf(cmd, "%s %s ; echo $?", [launchPath UTF8String], [[arguments componentsJoinedByString:@" "] UTF8String]);
+        sprintf(cmd, "%s %s ; echo $?", [launchPath UTF8String], [(arguments ? [arguments componentsJoinedByString:@" "]  : @"") UTF8String]);
         if ((fp = popen(cmd, "r")) != NULL)
         {
             while (fgets(cmd, sizeof(cmd), fp) != NULL) {
@@ -34,7 +34,6 @@ NSString * shell(NSString *launchPath ,NSArray<NSString *> *arguments)
         return resultStr;
     }
     return @"";
-
 }
 
 @implementation Shell

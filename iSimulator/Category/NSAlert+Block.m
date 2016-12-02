@@ -10,10 +10,20 @@
 
 @implementation NSAlert (Block)
 
-- (instancetype)initWithInfoTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles
++ (instancetype)alertWithInfoTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles
+{
+    return [[self alloc] initWithStyle:NSAlertStyleInformational title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles];
+}
+
++ (instancetype)alertWithWarningTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles
+{
+    return [[self alloc] initWithStyle:NSAlertStyleWarning title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles];
+}
+
+- (instancetype)initWithStyle:(NSAlertStyle)style title:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles
 {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.alertStyle = NSAlertStyleInformational;
+    alert.alertStyle = style;
     alert.messageText = title;
     alert.informativeText = message;
     
@@ -27,4 +37,10 @@
     return alert;
 }
 
+
+
+- (void)showSheetModalForWindow:(NSWindow *)sheetWindow completionHandler:(void (^)(NSModalResponse returnCode))handler
+{
+    [self beginSheetModalForWindow:sheetWindow completionHandler:handler];
+}
 @end

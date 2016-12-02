@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "mac",
-      "filename" : "icon.png",
+      "filename" : "pbSync2~iphone.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "icon@2x.png",
+      "filename" : "pbSync2~iphone@2x.png",
       "scale" : "2x"
     }
   ],
