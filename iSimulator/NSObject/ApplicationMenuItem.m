@@ -12,11 +12,14 @@
 #import "NSNumber+Addition.h"
 #import "SimulatorManager.h"
 
-@interface ApplicationMenuItem ()
+@interface ApplicationMenuItem () <NSMenuDelegate>
 
 @property (nonatomic, strong) S_AppInfo *app;
 
 @property (nonatomic, strong) NSString *detailText;
+
+/** 是否需要更新信息 */
+@property (nonatomic, assign) BOOL isNeedUpdateAPPInfo;
 
 @end
 
@@ -80,22 +83,26 @@
     
     __block NSMenuItem *info = [subMenu addItemWithTitle:@"" action:Nil keyEquivalent:@""];
     
-    NSFont *font = [NSFont systemFontOfSize:10.f];
+    [self updateAPPInfo:info];
     
-    NSString *bundleId = self.app.bundleId;
-    NSString *version = [NSString stringWithFormat:@"version: %@ (%@)", self.app.bundleShortVersion, self.app.bundleVersion];
-    
+    subMenu.delegate = self;
+    [self setSubmenu:subMenu];
+}
+
+- (void)updateAPPInfo:(NSMenuItem *)item
+{
     [[SimulatorManager shareSimulatorManager] getSandboxSize:self.app complete:^(long long sandboxSize) {
         [self.app getAppSize:^(long long appSize) {
+            NSFont *font = [NSFont systemFontOfSize:10.f];
+            NSString *bundleId = self.app.bundleId;
+            NSString *version = [NSString stringWithFormat:@"version: %@ (%@)", self.app.bundleShortVersion, self.app.bundleVersion];
             NSString *bundleSizeStr = [NSString stringWithFormat:@"Bundle Size: %@", [@(appSize) sizeToStr]];
             NSString *sandboxSizeStr = [NSString stringWithFormat:@"Sandbox Size: %@", [@(sandboxSize) sizeToStr]];
             NSAttributedString *detail = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@\n%@\n%@",bundleId, version, bundleSizeStr, sandboxSizeStr] attributes:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[NSColor lightGrayColor]}];
-            info.attributedTitle = detail;
-            [subMenu update];
+            item.attributedTitle = detail;
+            [item.menu update];
         }];
     }];
-    
-    [self setSubmenu:subMenu];
 }
 
 - (void)revealSandboxInFileViewer:(NSMenuItem *)item
@@ -133,4 +140,10 @@
     }
 }
 
+#pragma mark - NSMenuDelegate
+- (void)menuWillOpen:(NSMenu *)menu
+{
+    __block NSMenuItem *info = menu.itemArray.lastObject;
+    [self updateAPPInfo:info];
+}
 @end
