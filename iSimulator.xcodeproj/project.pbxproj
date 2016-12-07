@@ -20,6 +20,8 @@
 		6F1E0D371DD07D4C005160D0 /* URLContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D361DD07D4C005160D0 /* URLContent.m */; };
 		6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D391DD086C8005160D0 /* Shell.m */; };
 		6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */; };
+		6F1E8EF71DF7AEB100A7D109 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; };
+		6F1E8EF81DF7AEBC00A7D109 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEFA1DDAA71500BB307D /* OpenFinder.m */; };
 		6F32A5821DE82EFC00FEA1B7 /* AboutWindownContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A57C1DE82EFC00FEA1B7 /* AboutWindownContorller.m */; };
 		6F32A5831DE82EFC00FEA1B7 /* AboutWindownContorller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */; };
@@ -27,8 +29,6 @@
 		6F32A5871DE830A200FEA1B7 /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5861DE830A200FEA1B7 /* GeneralViewController.m */; };
 		6F32A58A1DE830B400FEA1B7 /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */; };
 		6F32A5941DEBC47E00FEA1B7 /* UpdateOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */; };
-		6F32A5971DEBCC0D00FEA1B7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; };
-		6F32A5A01DEBE43A00FEA1B7 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F4627031DD00B9300355984 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627021DD00B9300355984 /* AppDelegate.m */; };
 		6F4627061DD00B9300355984 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4627051DD00B9300355984 /* main.m */; };
 		6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F46270A1DD00B9300355984 /* Assets.xcassets */; };
@@ -46,7 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6F32A5A01DEBE43A00FEA1B7 /* Sparkle.framework in Embed Frameworks */,
+				6F1E8EF81DF7AEBC00A7D109 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F32A5971DEBCC0D00FEA1B7 /* Sparkle.framework in Frameworks */,
+				6F1E8EF71DF7AEB100A7D109 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
