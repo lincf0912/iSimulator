@@ -133,6 +133,11 @@ void _dispatch_cancel(dispatch_cancelable_block_t block)
     dispatch_source_cancel(source);
 }
 
+- (BOOL)isExistUrl:(NSURL *)url
+{
+    return self.myMonitors[url] != nil;
+}
+
 - (void)waitForDirectoryToFinishChanging:(NSURL *)url
 {
     __weak typeof(self) weakSelf = self;
@@ -145,6 +150,7 @@ void _dispatch_cancel(dispatch_cancelable_block_t block)
 
 - (void)checkDirectoryInfo:(NSURL *)url
 {
+    NSLog(@"监听目录发生变化 - url:%@ ", url);
     if (self.completeBlock) {
         self.completeBlock(url);
     }

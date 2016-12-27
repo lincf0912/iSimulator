@@ -8,6 +8,9 @@
 
 #import "GeneralViewController.h"
 #import "LoginItemsRegistry.h"
+#import "NSUserDefaults+KeyPath.h"
+
+#import "SimulatorManager.h"
 
 NSString *const startAtLoginName = @"iSimulator_startLogin";
 
@@ -75,4 +78,8 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
     return [LoginItemsRegistry isLoginRegistry];
 }
 
+- (IBAction)iSimulator_simulatorDisplay_action:(id)sender {
+    [NSUserDefaults setSimulatorDisplay:[(NSButton *)sender integerValue]];
+    [[SimulatorManager shareSimulatorManager] reloadSimulators];
+}
 @end

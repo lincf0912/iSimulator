@@ -11,12 +11,14 @@
 @interface SimulatorMonitor : NSObject
 
 @property (nonatomic, copy) void (^completeBlock)(NSURL *url);
-@property (nonatomic, readonly) NSDictionary <NSString *, dispatch_source_t>*monitors;
+//@property (nonatomic, readonly) NSDictionary <NSString *, dispatch_source_t>*monitors;
 
 - (void)addMonitor:(NSURL *)url;
 
 - (void)start;
 - (void)cancel;
 - (void)cancelWithUrl:(NSURL *)url;
+
+- (BOOL)isExistUrl:(NSURL *)url;
 
 @end

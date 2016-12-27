@@ -50,4 +50,23 @@ NSString *const UpdateOptionName = @"UpdateOption";
     [[NSUserDefaults standardUserDefaults] setInteger:updateCheckInterval forKey:UpdateOptionName];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+// =======================================================================================================
+// =======================================================================================================
+// =======================================================================================================
+
+NSString *const SimulatorDisplayName = @"SimulatorDisplay";
+
++ (NSInteger)simulatorDisplay
+{
+    NSInteger display = [[NSUserDefaults standardUserDefaults] integerForKey:SimulatorDisplayName];
+    return display;
+}
+
++ (void)setSimulatorDisplay:(NSInteger)display
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:display forKey:SimulatorDisplayName];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end

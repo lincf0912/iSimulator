@@ -16,7 +16,7 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    [self.window setFrameOrigin:NSMakePoint(0, [NSScreen mainScreen].frame.size.height)];
+//    [self.window setFrameOrigin:NSMakePoint(0, [NSScreen mainScreen].frame.size.height)];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:(id)kCFBundleNameKey];

@@ -8,6 +8,8 @@
 
 #import "URLContent.h"
 
+static NSURL *devicePathURL_final = nil;
+
 NSString *const devicesPath = @"Developer/CoreSimulator/Devices/";
 NSString *const deviceSetPlist = @"device_set.plist";
 NSString *const devicePlist = @"device.plist";
@@ -18,10 +20,14 @@ NSString *const applicationForDevice = @"data/Containers/Bundle/Application";
 NSString *const mobileContainerManagerPlist = @".com.apple.mobile_container_manager.metadata.plist";
 NSString *const mobileContainerManagerPlist_Identifier = @"MCMMetadataIdentifier";
 
+
 NSURL * devicePathURL()
 {
-    NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask,YES) objectAtIndex:0];
-    return [NSURL fileURLWithPath:[libraryPath stringByAppendingPathComponent:devicesPath]];
+    if (devicePathURL_final == nil) {
+        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,NSUserDomainMask,YES) objectAtIndex:0];
+        devicePathURL_final = [NSURL fileURLWithPath:[libraryPath stringByAppendingPathComponent:devicesPath]];
+    }
+    return devicePathURL_final;
 }
 
 NSURL * deviceURL(NSString *UDID)

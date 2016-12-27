@@ -21,6 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    self.updateOptions = @[UpdateOptionForOperation(updateOperationType_everyDay),
+                           UpdateOptionForOperation(updateOperationType_everyWeek),
+                           UpdateOptionForOperation(updateOperationType_everyMonth)];
 }
 
 - (void)viewWillAppear
@@ -28,10 +32,6 @@
     [super viewWillAppear];
     
     self.preferredContentSize = self.view.fittingSize;
-    
-    self.updateOptions = @[UpdateOptionForOperation(updateOperationType_everyDay),
-                           UpdateOptionForOperation(updateOperationType_everyWeek),
-                           UpdateOptionForOperation(updateOperationType_everyMonth)];
 }
 
 - (UpdateOption *)selectedUpdateOption

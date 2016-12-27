@@ -50,6 +50,12 @@
     [self loadData:nil];
 }
 
+/* 重新加载设备列表 */
+- (void)reloadSimulators
+{
+    [self loadData:nil];
+}
+
 - (void)loadData:(void (^)())complete
 {
     if (self.resultBlock == nil) return;
@@ -98,9 +104,7 @@
             self.container = [container copy];
             self.resultBlock(self.container, [appList copy]);
             /** 开启监视 */
-            if (self.monitor == nil) {
-                [self startMointor];
-            }
+            [self startMointor];
             if (complete) complete();
         });
     });
@@ -108,68 +112,53 @@
 
 - (void)startMointor
 {
-    __weak typeof(self) weakSelf = self;
     /** 开启监视 */
     if (self.monitor == nil) {
         self.monitor = [[SimulatorMonitor alloc] init];
         
-        void (^monitorUrl)() = ^{
+        __weak typeof(self) weakSelf = self;
+
+        void (^monitorUrl)(SimulatorMonitor *) = ^(SimulatorMonitor *monitor){
             /** 监听设备URL */
-            [self.monitor addMonitor:devicePathURL()];
-            for (NSDictionary *dict in self.container) {
+            [monitor addMonitor:devicePathURL()];
+            for (NSDictionary *dict in weakSelf.container) {
                 for (NSString *key in dict) {
                     NSArray *devices = dict[key];
                     for (S_Device *device in devices) {
                         /** 监听设备状态URL */
-                        NSURL *deviceDataUrl = deviceDataURL(device.UDID);
                         NSURL *deviceUrl = deviceURL(device.UDID);
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:deviceUrl.path]) {
+                            [monitor addMonitor:deviceUrl];
+                        }
+                        /** 监听设备数据URL */
+                        NSURL *deviceDataUrl = deviceDataURL(device.UDID);
                         if ([[NSFileManager defaultManager] fileExistsAtPath:deviceDataUrl.path]) {
-                            [self.monitor addMonitor:deviceDataUrl];
-                        } else if ([[NSFileManager defaultManager] fileExistsAtPath:deviceUrl.path]) {
-                            [self.monitor addMonitor:deviceUrl];
+                            [monitor addMonitor:deviceDataUrl];
                         }
                         /** 监听应用变化 */
-                        if (device.appList.count) {
-                            NSURL *applicationUrl = applicationForDeviceURL(device.UDID);
-                            if ([[NSFileManager defaultManager] fileExistsAtPath:applicationUrl.path]) {
-                                [self.monitor addMonitor:applicationUrl];
-                            }
+                        NSURL *applicationUrl = applicationForDeviceURL(device.UDID);
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:applicationUrl.path]) {
+                            [monitor addMonitor:applicationUrl];
                         }
                     }
                 }
             }
         };
         
-        monitorUrl();
+        /* 监听URL */
+        monitorUrl(self.monitor);
         [self.monitor start];
         
         [self.monitor setCompleteBlock:^(NSURL *url) {
-            /** 如果非应用目录变化，则需要刷新监听列表 */
-            BOOL isNotAPPUrl = ![url.path containsString:applicationForDevice];
-            if (isNotAPPUrl) {
-                [weakSelf.monitor cancelWithUrl:url];
-            } else {
-                [weakSelf.monitor cancelWithUrl:devicePathURL()];
-            }
+            /* 因为loadData的命令会触发目录变化，所以在loadData之前需要取消对目录的监听 */
+            [weakSelf.monitor cancelWithUrl:url];
             [weakSelf loadData:^{
-                if (isNotAPPUrl) {
-                    [weakSelf.monitor cancel];
-                    /** 重置监听 */
-                    monitorUrl();
-                    [weakSelf.monitor start];
-                } else {
-                    [weakSelf.monitor addMonitor:devicePathURL()];
-                }
+                [weakSelf.monitor cancel];
+                /** 重置监听 */
+                monitorUrl(weakSelf.monitor);
+                [weakSelf.monitor start];
             }];
         }];
-    }
-}
-
-- (void)cancelMointor
-{
-    if (self.monitor) {
-        [self.monitor setCompleteBlock:nil];
-        [self.monitor cancel];
     }
 }
 

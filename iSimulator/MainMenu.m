@@ -17,6 +17,8 @@
 #import "S_Device.h"
 #import "S_AppInfo.h"
 
+#import "NSUserDefaults+KeyPath.h"
+
 NSString *const mainMenuTitle = @"Main Menu";
 NSInteger const recent_max = 5;
 
@@ -128,7 +130,7 @@ NSInteger const about_Tag = 990;
                     /** 设备 */
                     NSArray *devics = allDevice[version];
                     for (S_Device *device in devics) {
-                        if (device.appList.count) {
+                        if (device.appList.count || [NSUserDefaults simulatorDisplay]) { /* 显示没有应用的模拟器 */
                             NSMenuItem *deviceItem = [[DeviceMenuItem alloc] initWithDevice:device];
                             deviceItem.action = @selector(revealInFileViewer:);
                             deviceItem.target = self;

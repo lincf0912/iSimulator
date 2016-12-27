@@ -55,8 +55,8 @@
     if (_aboutWindowController == nil) {
         _aboutWindowController = [[AboutWindownContorller alloc] initWithWindowNibName:@"AboutWindownContorller"];
     }
-//    [_aboutWindowController.window center];
-//    [_aboutWindowController.window orderFrontRegardless];
+    [_aboutWindowController.window center];
+    [_aboutWindowController.window orderFrontRegardless];
     
     [_aboutWindowController showWindow:self];
 }
@@ -67,8 +67,9 @@
     if(_preferencesWindowController == nil)
     {
         _preferencesWindowController = [[NSStoryboard storyboardWithName:@"PreferencesStoryboard" bundle:nil] instantiateInitialController];
-        [_preferencesWindowController.window setFrameOrigin:NSMakePoint(0, [NSScreen mainScreen].frame.size.height)];
     }
+    [_preferencesWindowController.window center];
+    [_preferencesWindowController.window orderFrontRegardless];
     
     [_preferencesWindowController showWindow:self];
 }

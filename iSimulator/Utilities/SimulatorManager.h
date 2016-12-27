@@ -16,6 +16,8 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 + (instancetype)shareSimulatorManager;
 /** 异步加载设备列表 */
 - (void)loadSimulators:(resultBlock)complete;
+/* 重新加载设备列表 */
+- (void)reloadSimulators;
 
 /** 异步获取沙盒大小 */
 - (void)getSandboxSize:(S_AppInfo *)app complete:(void (^)(long long sandboxSize))complete;
