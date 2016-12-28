@@ -203,9 +203,9 @@
 
 - (void)resetDeviceData:(S_Device *)device
 {
-    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to reset the Simulator content and settings?" message:@"All installed applications, content, and settings will be moved to the trash. This process may take a few moment, please be patient." cancelButtonTitle:@"Don't Reset" otherButtonTitles:@"Reset"];
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to reset the Simulator content and settings?" message:@"All installed applications, content, and settings will be moved to the trash. This process may take a few moment, please be patient." cancelButtonTitle:@"Reset" otherButtonTitles:@[@"Don't Reset"]];
     [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode != abs(NSModalResponseStop)) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             /** 需要先shutdown 但shutdown会导致模拟器卡死 */
             shell(@"xcrun simctl shutdown ", @[device.UDID]);
             sleep(0.5);
@@ -260,9 +260,9 @@
 
 - (void)deleteDevice:(S_Device *)device
 {
-    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to delete the Simulator?" message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Don't Delete" otherButtonTitles:@"Delete"];
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to delete the Simulator?" message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
     [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode != abs(NSModalResponseStop)) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             shell(@"xcrun simctl delete ", @[device.UDID]);
             NSURL *deviceURL = [self getDeviceUrl:device];
             [[NSFileManager defaultManager] removeItemAtURL:deviceURL error:nil];
@@ -313,9 +313,9 @@
 
 - (void)resetAppDataInSimulator:(S_AppInfo *)appInfo
 {
-    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to reset the Application Data?" message:@"Documents, Library, and tmp will be moved to the trash. This process may take a few moment, please be patient." cancelButtonTitle:@"Don't ResetApp" otherButtonTitles:@"ResetApp"];
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to reset the Application Data?" message:@"Documents, Library, and tmp will be moved to the trash. This process may take a few moment, please be patient." cancelButtonTitle:@"ResetApp" otherButtonTitles:@[@"Don't ResetApp"]];
     [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode != abs(NSModalResponseStop)) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             NSURL *appUrl = [self getAppDocumentUrl:appInfo];
             if (appUrl) {
                 shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Documents/*"]]);
@@ -337,9 +337,9 @@
 
 - (void)uninstallAppInSimulator:(S_AppInfo *)appInfo
 {
-    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to uninstall the Application?" message:[NSString stringWithFormat:@"the %@ application will be uninstall from the device.", appInfo.bundleDisplayName] cancelButtonTitle:@"Don't Uninstall" otherButtonTitles:@"Uninstall"];
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to uninstall the Application?" message:[NSString stringWithFormat:@"the %@ application will be uninstall from the device.", appInfo.bundleDisplayName] cancelButtonTitle:@"Uninstall" otherButtonTitles:@[@"Don't Uninstall"]];
     [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode != abs(NSModalResponseStop)) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             shell(@"xcrun simctl terminate ", @[appInfo.UDID, appInfo.bundleId]);
             sleep(1);
             shell(@"xcrun simctl uninstall booted ", @[appInfo.bundleId]);

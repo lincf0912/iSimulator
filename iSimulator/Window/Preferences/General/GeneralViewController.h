@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "BaseSettingViewController.h"
 
-@interface GeneralViewController : NSViewController
+@interface GeneralViewController : BaseSettingViewController
 
 @end

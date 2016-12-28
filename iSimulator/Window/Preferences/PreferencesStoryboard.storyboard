@@ -148,9 +148,9 @@
                                         </items>
                                     </menu>
                                     <connections>
-                                        <binding destination="rmQ-te-eNr" name="content" keyPath="updateOptions" id="pqI-Dm-Wct"/>
-                                        <binding destination="rmQ-te-eNr" name="contentValues" keyPath="updateOptions" previousBinding="pqI-Dm-Wct" id="BK7-sw-b2S"/>
                                         <binding destination="rmQ-te-eNr" name="selectedObject" keyPath="selectedUpdateOption" previousBinding="BK7-sw-b2S" id="nV8-QR-dqJ"/>
+                                        <binding destination="rmQ-te-eNr" name="contentValues" keyPath="updateOptions" previousBinding="pqI-Dm-Wct" id="BK7-sw-b2S"/>
+                                        <binding destination="rmQ-te-eNr" name="content" keyPath="updateOptions" id="pqI-Dm-Wct"/>
                                     </connections>
                                 </popUpButtonCell>
                             </popUpButton>

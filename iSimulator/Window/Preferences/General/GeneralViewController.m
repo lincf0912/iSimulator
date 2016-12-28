@@ -37,13 +37,6 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
      ];
 }
 
-- (void)viewWillAppear
-{
-    [super viewWillAppear];
-    
-    self.preferredContentSize = self.view.fittingSize;
-}
-
 - (void)setISimulator_startLogin:(BOOL)iSimulator_startLogin
 {
     [self willChangeValueForKey:startAtLoginName];

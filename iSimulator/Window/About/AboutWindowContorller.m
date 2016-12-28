@@ -1,18 +1,18 @@
 //
-//  AboutWindownContorller.m
+//  AboutWindowContorller.m
 //  iSimulator
 //
 //  Created by LamTsanFeng on 2016/11/25.
 //  Copyright © 2016年 GZMiracle. All rights reserved.
 //
 
-#import "AboutWindownContorller.h"
+#import "AboutWindowContorller.h"
 
-@interface AboutWindownContorller ()
+@interface AboutWindowContorller ()
 
 @end
 
-@implementation AboutWindownContorller
+@implementation AboutWindowContorller
 
 - (void)windowDidLoad {
     [super windowDidLoad];

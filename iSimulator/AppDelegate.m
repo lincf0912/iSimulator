@@ -14,13 +14,13 @@
 #import "NSUserDefaults+KeyPath.h"
 #import "NSDate+common.h"
 
-#import "AboutWindownContorller.h"
+#import "AboutWindowContorller.h"
 
 @interface AppDelegate () <MainMenuDelegate, SUUpdaterDelegate>
 
 @property (nonatomic, strong) MainMenu *menu;
 
-@property (nonatomic, strong) AboutWindownContorller *aboutWindowController;
+@property (nonatomic, strong) AboutWindowContorller *aboutWindowController;
 
 @property (nonatomic, nullable) NSWindowController *preferencesWindowController;
 
@@ -53,7 +53,7 @@
 {
     [NSApp activateIgnoringOtherApps:YES];
     if (_aboutWindowController == nil) {
-        _aboutWindowController = [[AboutWindownContorller alloc] initWithWindowNibName:@"AboutWindownContorller"];
+        _aboutWindowController = [[AboutWindowContorller alloc] initWithWindowNibName:@"AboutWindowContorller"];
     }
     [_aboutWindowController.window center];
     [_aboutWindowController.window orderFrontRegardless];

@@ -27,13 +27,6 @@
                            UpdateOptionForOperation(updateOperationType_everyMonth)];
 }
 
-- (void)viewWillAppear
-{
-    [super viewWillAppear];
-    
-    self.preferredContentSize = self.view.fittingSize;
-}
-
 - (UpdateOption *)selectedUpdateOption
 {
     return [NSUserDefaults updateOption];
