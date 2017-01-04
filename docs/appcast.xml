@@ -6,24 +6,14 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 1.4: 修复已知bug]]></title>
+            <title><![CDATA[Version 1.5: 优化弹框&偏好设置]]></title>
             <description><![CDATA[<ul>
-                <li>修复切换一些从来没有使用过的模拟器时，没有刷新app显示</li>
-                <li>新增没有应用的模拟器显示选项</li>
+                <li>调整弹框激活当前窗口，原来默认不执行操作修改为执行操作</li>
+                <li>偏好设置UI大小变化动画</li>
                 </ul>
             ]]></description>
-            <pubDate>2016-12-27 14:26:42 GMT</pubDate>
-            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/1.4/iSimulator-1.4.zip" length="3,553,506" type="application/octet-stream" sparkle:version="14" sparkle:shortVersionString="1.4">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Version 1.3: 更新应用信息]]></title>
-            <description><![CDATA[<ul>
-                <li>新增更新应用信息</li>
-                </ul>
-            ]]></description>
-            <pubDate>2016-12-07 10:13:19 GMT</pubDate>
-            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/1.3/iSimulator-1.3.zip" length="3549079" type="application/octet-stream" sparkle:version="13" sparkle:shortVersionString="1.3">
+            <pubDate>2017-01-04 15:30:38 GMT</pubDate>
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/1.5/iSimulator-1.5.zip" length="3,555,778" type="application/octet-stream" sparkle:version="15" sparkle:shortVersionString="1.5">
             </enclosure>
         </item>
 	</channel>
