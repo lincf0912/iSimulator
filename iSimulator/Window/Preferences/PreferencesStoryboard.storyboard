@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="132" y="-306"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Preferences Tab View Controller-->
         <scene sceneID="d6x-7h-1cv">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="H1Z-Dg-Yir" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="H1Z-Dg-Yir" customClass="PreferencesTabViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="General" identifier="" image="NSPreferencesGeneral" id="7HH-HW-7mr"/>
                         <tabViewItem label="Advanced" identifier="" image="NSAdvanced" id="sCc-qd-kYM"/>
@@ -39,6 +39,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
                         <tabViewItems/>
+                        <connections>
+                            <outlet property="delegate" destination="H1Z-Dg-Yir" id="Wsw-2I-3ha"/>
+                        </connections>
                     </tabView>
                     <connections>
                         <segue destination="O3b-Io-kot" kind="relationship" relationship="tabItems" id="4aY-0V-AtL"/>
@@ -49,23 +52,23 @@
             </objects>
             <point key="canvasLocation" x="132" y="186"/>
         </scene>
-        <!--General View Controller-->
+        <!--General-->
         <scene sceneID="aDd-77-Iuz">
             <objects>
-                <viewController id="O3b-Io-kot" customClass="GeneralViewController" sceneMemberID="viewController">
+                <viewController title="General" id="O3b-Io-kot" customClass="GeneralViewController" sceneMemberID="viewController">
                     <view key="view" id="7mt-92-Cgh">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="122"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="MTW-GN-70p">
-                                <rect key="frame" x="18" y="84" width="104" height="18"/>
+                                <rect key="frame" x="18" y="86" width="104" height="18"/>
                                 <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="OYx-s8-hjD">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="DIH-rQ-aG1">
-                                <rect key="frame" x="18" y="38" width="233" height="18"/>
+                                <rect key="frame" x="18" y="40" width="233" height="18"/>
                                 <buttonCell key="cell" type="check" title="[no application] Simulator display" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zJl-7w-qu2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -76,7 +79,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-r3-kF4">
-                                <rect key="frame" x="18" y="64" width="289" height="14"/>
+                                <rect key="frame" x="18" y="66" width="289" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Automatically opens the app when you start your Mac." id="a5y-ss-h0q">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -84,7 +87,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fp0-iD-rW7">
-                                <rect key="frame" x="18" y="18" width="257" height="14"/>
+                                <rect key="frame" x="18" y="20" width="257" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow [no application] simulator display on menu" id="oQY-0X-HwU">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -98,12 +101,11 @@
                             <constraint firstItem="DIH-rQ-aG1" firstAttribute="top" secondItem="fCk-r3-kF4" secondAttribute="bottom" constant="10" id="ARJ-yF-NTt"/>
                             <constraint firstItem="DIH-rQ-aG1" firstAttribute="leading" secondItem="MTW-GN-70p" secondAttribute="leading" id="DdG-Tj-3Lu"/>
                             <constraint firstItem="Fp0-iD-rW7" firstAttribute="leading" secondItem="DIH-rQ-aG1" secondAttribute="leading" id="TDD-xd-xtq"/>
-                            <constraint firstItem="MTW-GN-70p" firstAttribute="leading" secondItem="7mt-92-Cgh" secondAttribute="leading" constant="20" id="VOw-jd-DtW"/>
-                            <constraint firstAttribute="trailing" secondItem="fCk-r3-kF4" secondAttribute="trailing" constant="145" id="Vw6-OP-xEe"/>
-                            <constraint firstItem="fCk-r3-kF4" firstAttribute="top" secondItem="MTW-GN-70p" secondAttribute="bottom" constant="8" id="Y2j-mx-zXl"/>
+                            <constraint firstItem="MTW-GN-70p" firstAttribute="leading" secondItem="7mt-92-Cgh" secondAttribute="leading" constant="20" symbolic="YES" id="VOw-jd-DtW"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fCk-r3-kF4" secondAttribute="trailing" constant="145" id="Vw6-OP-xEe"/>
                             <constraint firstItem="fCk-r3-kF4" firstAttribute="top" secondItem="MTW-GN-70p" secondAttribute="bottom" constant="8" id="eYR-zg-V4M"/>
-                            <constraint firstAttribute="bottom" secondItem="Fp0-iD-rW7" secondAttribute="bottom" constant="18" id="jKe-55-Rht"/>
-                            <constraint firstItem="MTW-GN-70p" firstAttribute="top" secondItem="7mt-92-Cgh" secondAttribute="top" constant="20" id="p8a-oK-Pkp"/>
+                            <constraint firstAttribute="bottom" secondItem="Fp0-iD-rW7" secondAttribute="bottom" constant="20" symbolic="YES" id="jKe-55-Rht"/>
+                            <constraint firstItem="MTW-GN-70p" firstAttribute="top" secondItem="7mt-92-Cgh" secondAttribute="top" constant="20" symbolic="YES" id="p8a-oK-Pkp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -115,16 +117,19 @@
             </objects>
             <point key="canvasLocation" x="802" y="14"/>
         </scene>
-        <!--Advanced View Controller-->
+        <!--Advanced-->
         <scene sceneID="vwg-Rk-q7N">
             <objects>
-                <viewController id="rmQ-te-eNr" customClass="AdvancedViewController" sceneMemberID="viewController">
+                <viewController title="Advanced" id="rmQ-te-eNr" customClass="AdvancedViewController" sceneMemberID="viewController">
                     <view key="view" id="spP-eN-Z95">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="95"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="99"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Gxb-DA-ZNa">
-                                <rect key="frame" x="18" y="59" width="221" height="18"/>
+                                <rect key="frame" x="18" y="59" width="221" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="Dnq-MQ-lRf"/>
+                                </constraints>
                                 <buttonCell key="cell" type="check" title="Automatically Check for Updates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rgh-2Q-tSS">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -134,11 +139,7 @@
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZO-04-n4L" userLabel="Default Activation Duration">
-                                <rect key="frame" x="252" y="54" width="152" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="147" id="Vis-w7-k8M"/>
-                                    <constraint firstAttribute="height" constant="21" id="w2f-oC-hOg"/>
-                                </constraints>
+                                <rect key="frame" x="255" y="57" width="142" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Not Implemented" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YCe-mI-3lH" id="hgg-Yu-QAc">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -166,22 +167,21 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Gxb-DA-ZNa" firstAttribute="top" secondItem="spP-eN-Z95" secondAttribute="top" constant="20" id="7qP-bS-i20"/>
-                            <constraint firstItem="2KS-BB-Y6j" firstAttribute="top" secondItem="Gxb-DA-ZNa" secondAttribute="bottom" constant="20" id="8O8-yy-45K"/>
-                            <constraint firstItem="iZO-04-n4L" firstAttribute="centerY" secondItem="Gxb-DA-ZNa" secondAttribute="centerY" id="CoS-JI-RgP"/>
-                            <constraint firstAttribute="bottom" secondItem="2KS-BB-Y6j" secondAttribute="bottom" constant="20" id="ULL-22-QIG"/>
-                            <constraint firstItem="iZO-04-n4L" firstAttribute="leading" secondItem="Gxb-DA-ZNa" secondAttribute="trailing" constant="17" id="a8P-ot-YQC"/>
-                            <constraint firstItem="2KS-BB-Y6j" firstAttribute="leading" secondItem="spP-eN-Z95" secondAttribute="leading" constant="20" id="gZb-pH-Uzo"/>
-                            <constraint firstAttribute="trailing" secondItem="iZO-04-n4L" secondAttribute="trailing" constant="49" id="i5w-HS-EdS"/>
-                            <constraint firstItem="2KS-BB-Y6j" firstAttribute="top" secondItem="Gxb-DA-ZNa" secondAttribute="bottom" constant="20" id="lTD-RQ-e8O"/>
-                            <constraint firstItem="Gxb-DA-ZNa" firstAttribute="leading" secondItem="spP-eN-Z95" secondAttribute="leading" constant="20" id="vEx-hO-eJP"/>
+                            <constraint firstItem="iZO-04-n4L" firstAttribute="centerY" secondItem="Gxb-DA-ZNa" secondAttribute="centerY" id="1b7-BT-rDN"/>
+                            <constraint firstItem="iZO-04-n4L" firstAttribute="leading" secondItem="Gxb-DA-ZNa" secondAttribute="trailing" constant="20" id="6vT-kK-nBc"/>
+                            <constraint firstItem="Gxb-DA-ZNa" firstAttribute="top" secondItem="spP-eN-Z95" secondAttribute="top" constant="20" symbolic="YES" id="Bdl-QL-H7C"/>
+                            <constraint firstAttribute="bottom" secondItem="2KS-BB-Y6j" secondAttribute="bottom" constant="20" symbolic="YES" id="JWe-3V-Owy"/>
+                            <constraint firstItem="2KS-BB-Y6j" firstAttribute="top" secondItem="Gxb-DA-ZNa" secondAttribute="bottom" constant="20" id="Kki-L7-XsA"/>
+                            <constraint firstAttribute="trailing" secondItem="Gxb-DA-ZNa" secondAttribute="trailing" constant="213" id="a0X-Yl-jtD"/>
+                            <constraint firstItem="Gxb-DA-ZNa" firstAttribute="leading" secondItem="spP-eN-Z95" secondAttribute="leading" constant="20" id="nxQ-7n-3pw"/>
+                            <constraint firstItem="2KS-BB-Y6j" firstAttribute="leading" secondItem="Gxb-DA-ZNa" secondAttribute="leading" id="xKD-7v-Cc6"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="7zb-6y-yLc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="Uwa-oX-q1N" customClass="SUUpdater"/>
             </objects>
-            <point key="canvasLocation" x="802" y="264.5"/>
+            <point key="canvasLocation" x="802" y="271.5"/>
         </scene>
     </scenes>
     <resources>

@@ -35,6 +35,7 @@
 		6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F46270A1DD00B9300355984 /* Assets.xcassets */; };
 		6F46271A1DD016C700355984 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F4627191DD016C700355984 /* MainMenu.xib */; };
 		6F5BA5011DE8059700F26951 /* NSAlert+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5BA5001DE8059700F26951 /* NSAlert+Block.m */; };
+		6F5FBDCA1E1CA219007B5481 /* PreferencesTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5FBDC91E1CA219007B5481 /* PreferencesTabViewController.m */; };
 		6FB9C2CF1DEC018A00616765 /* NSUserDefaults+KeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB9C2CE1DEC018A00616765 /* NSUserDefaults+KeyPath.m */; };
 		6FB9C2D41DEC075700616765 /* NSDate+common.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB9C2D31DEC075700616765 /* NSDate+common.m */; };
 		6FB9C2D71DEC092500616765 /* LoginItemsRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB9C2D61DEC092500616765 /* LoginItemsRegistry.m */; };
@@ -105,6 +106,8 @@
 		6F4627191DD016C700355984 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		6F5BA4FF1DE8059700F26951 /* NSAlert+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+Block.h"; sourceTree = "<group>"; };
 		6F5BA5001DE8059700F26951 /* NSAlert+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+Block.m"; sourceTree = "<group>"; };
+		6F5FBDC81E1CA219007B5481 /* PreferencesTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesTabViewController.h; sourceTree = "<group>"; };
+		6F5FBDC91E1CA219007B5481 /* PreferencesTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesTabViewController.m; sourceTree = "<group>"; };
 		6FB9C2CD1DEC018A00616765 /* NSUserDefaults+KeyPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+KeyPath.h"; sourceTree = "<group>"; };
 		6FB9C2CE1DEC018A00616765 /* NSUserDefaults+KeyPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+KeyPath.m"; sourceTree = "<group>"; };
 		6FB9C2D21DEC075700616765 /* NSDate+common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+common.h"; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 			children = (
 				6F3D92291E136D590037C5A5 /* BaseSettingViewController.h */,
 				6F3D922A1E136D590037C5A5 /* BaseSettingViewController.m */,
+				6F5FBDC81E1CA219007B5481 /* PreferencesTabViewController.h */,
+				6F5FBDC91E1CA219007B5481 /* PreferencesTabViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				6F32A5821DE82EFC00FEA1B7 /* AboutWindowController.m in Sources */,
 				6F1E0D2A1DD077BC005160D0 /* BaseModel.m in Sources */,
 				6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */,
+				6F5FBDCA1E1CA219007B5481 /* PreferencesTabViewController.m in Sources */,
 				6F1D606B1DD47A720056ED24 /* ApplicationMenuItem.m in Sources */,
 				6FB9C2D41DEC075700616765 /* NSDate+common.m in Sources */,
 				6F32A5941DEBC47E00FEA1B7 /* UpdateOption.m in Sources */,
