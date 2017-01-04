@@ -1,5 +1,5 @@
 //
-//  AboutWindowContorller.h
+//  AboutWindowController.h
 //  iSimulator
 //
 //  Created by LamTsanFeng on 2016/11/25.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AboutWindowContorller : NSWindowController
+@interface AboutWindowController : NSWindowController
 // Properties are used by bindings
 @property (copy) NSString *appName;
 @property (copy) NSString *version;

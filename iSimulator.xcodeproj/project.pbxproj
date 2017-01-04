@@ -23,8 +23,8 @@
 		6F1E8EF71DF7AEB100A7D109 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; };
 		6F1E8EF81DF7AEBC00A7D109 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEFA1DDAA71500BB307D /* OpenFinder.m */; };
-		6F32A5821DE82EFC00FEA1B7 /* AboutWindowContorller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A57C1DE82EFC00FEA1B7 /* AboutWindowContorller.m */; };
-		6F32A5831DE82EFC00FEA1B7 /* AboutWindownContorller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */; };
+		6F32A5821DE82EFC00FEA1B7 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A57C1DE82EFC00FEA1B7 /* AboutWindowController.m */; };
+		6F32A5831DE82EFC00FEA1B7 /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A57D1DE82EFC00FEA1B7 /* AboutWindowController.xib */; };
 		6F32A5841DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A5811DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard */; };
 		6F32A5871DE830A200FEA1B7 /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5861DE830A200FEA1B7 /* GeneralViewController.m */; };
 		6F32A58A1DE830B400FEA1B7 /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */; };
@@ -83,9 +83,9 @@
 		6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iActivityIndicatorView.m; sourceTree = "<group>"; };
 		6F31FEF91DDAA71500BB307D /* OpenFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenFinder.h; sourceTree = "<group>"; };
 		6F31FEFA1DDAA71500BB307D /* OpenFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenFinder.m; sourceTree = "<group>"; };
-		6F32A57B1DE82EFC00FEA1B7 /* AboutWindowContorller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowContorller.h; sourceTree = "<group>"; };
-		6F32A57C1DE82EFC00FEA1B7 /* AboutWindowContorller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowContorller.m; sourceTree = "<group>"; };
-		6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindownContorller.xib; sourceTree = "<group>"; };
+		6F32A57B1DE82EFC00FEA1B7 /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
+		6F32A57C1DE82EFC00FEA1B7 /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
+		6F32A57D1DE82EFC00FEA1B7 /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
 		6F32A5811DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PreferencesStoryboard.storyboard; sourceTree = "<group>"; };
 		6F32A5851DE830A200FEA1B7 /* GeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralViewController.h; sourceTree = "<group>"; };
 		6F32A5861DE830A200FEA1B7 /* GeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralViewController.m; sourceTree = "<group>"; };
@@ -206,9 +206,9 @@
 		6F32A57A1DE82EFC00FEA1B7 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				6F32A57B1DE82EFC00FEA1B7 /* AboutWindowContorller.h */,
-				6F32A57C1DE82EFC00FEA1B7 /* AboutWindowContorller.m */,
-				6F32A57D1DE82EFC00FEA1B7 /* AboutWindownContorller.xib */,
+				6F32A57B1DE82EFC00FEA1B7 /* AboutWindowController.h */,
+				6F32A57C1DE82EFC00FEA1B7 /* AboutWindowController.m */,
+				6F32A57D1DE82EFC00FEA1B7 /* AboutWindowController.xib */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 				6F32A5841DE82EFC00FEA1B7 /* PreferencesStoryboard.storyboard in Resources */,
 				6F46270B1DD00B9300355984 /* Assets.xcassets in Resources */,
 				6F46271A1DD016C700355984 /* MainMenu.xib in Resources */,
-				6F32A5831DE82EFC00FEA1B7 /* AboutWindownContorller.xib in Resources */,
+				6F32A5831DE82EFC00FEA1B7 /* AboutWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +403,7 @@
 				6F32A5871DE830A200FEA1B7 /* GeneralViewController.m in Sources */,
 				6F1E0D371DD07D4C005160D0 /* URLContent.m in Sources */,
 				6F1D606E1DD557AC0056ED24 /* NSNumber+Addition.m in Sources */,
-				6F32A5821DE82EFC00FEA1B7 /* AboutWindowContorller.m in Sources */,
+				6F32A5821DE82EFC00FEA1B7 /* AboutWindowController.m in Sources */,
 				6F1E0D2A1DD077BC005160D0 /* BaseModel.m in Sources */,
 				6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */,
 				6F1D606B1DD47A720056ED24 /* ApplicationMenuItem.m in Sources */,
