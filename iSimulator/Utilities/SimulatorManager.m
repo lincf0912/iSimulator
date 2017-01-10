@@ -254,6 +254,7 @@
 {
     [OpenFinder selectFile:@[@"app"] complete:^(NSURL *url) {
         //xcrun simctl install booted <path>
+        shell(@"xcrun instruments -w ", @[device.UDID]);
         shell(@"xcrun simctl install booted ", @[[NSString stringWithFormat:@"\"%@\"", url.path]]);
     }];
 }
@@ -328,10 +329,7 @@
 - (void)launchAppInSimulator:(S_AppInfo *)appInfo
 {
     shell(@"xcrun instruments -w ", @[appInfo.UDID]);
-    
-    while (![shell(@"xcrun simctl getenv ", @[appInfo.UDID, appInfo.deviceName]) isEqualToString:@"(null)"]) {
-        sleep(2);
-    }
+
     shell(@"xcrun simctl launch booted ", @[appInfo.bundleId]);
 }
 
@@ -340,6 +338,7 @@
     NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to uninstall the Application?" message:[NSString stringWithFormat:@"the %@ application will be uninstall from the device.", appInfo.bundleDisplayName] cancelButtonTitle:@"Uninstall" otherButtonTitles:@[@"Don't Uninstall"]];
     [alert showSheetModalForWindow:[NSApp windows].firstObject completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
+            shell(@"xcrun instruments -w ", @[appInfo.UDID]);
             shell(@"xcrun simctl terminate ", @[appInfo.UDID, appInfo.bundleId]);
             sleep(1);
             shell(@"xcrun simctl uninstall booted ", @[appInfo.bundleId]);
