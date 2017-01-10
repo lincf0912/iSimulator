@@ -31,6 +31,7 @@
             complete(nil);
         }
     }];
+    [[NSApp windows].lastObject becomeKeyWindow];
 }
 
 + (void)multipleSelectFile:(NSArray <NSString *>*)suffixs complete:(void (^)(NSArray <NSURL *>*urls))complete
@@ -54,5 +55,6 @@
             complete(nil);
         }
     }];
+    [[NSApp windows].lastObject becomeKeyWindow];
 }
 @end

@@ -254,8 +254,10 @@
 {
     [OpenFinder selectFile:@[@"app"] complete:^(NSURL *url) {
         //xcrun simctl install booted <path>
-        shell(@"xcrun instruments -w ", @[device.UDID]);
-        shell(@"xcrun simctl install booted ", @[[NSString stringWithFormat:@"\"%@\"", url.path]]);
+        if (url) {
+            shell(@"xcrun instruments -w ", @[device.UDID]);
+            shell(@"xcrun simctl install booted ", @[[NSString stringWithFormat:@"\"%@\"", url.path]]);
+        }
     }];
 }
 
