@@ -224,13 +224,11 @@
 {
     [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg"] complete:^(NSArray<NSURL *> *urls) {
         //xcrun simctl addphoto <device> <path> [... <path>]
-        NSMutableString *urlStr = [NSMutableString stringWithString:@""];
         for (NSURL *url in urls) {
-            [urlStr appendFormat:@"\"%@\"", [url path]];
-            [urlStr appendString:@" "];
-        }
-        if (urlStr.length) {
-            shell(@"xcrun simctl addphoto ", @[device.UDID, urlStr]);
+            NSString *urlPath = [NSString stringWithFormat:@"\"%@\"", [url path]];
+            if (urlPath.length) {
+                shell(@"xcrun simctl addphoto ", @[device.UDID, urlPath]);
+            }
         }
     }];
 }
@@ -239,13 +237,24 @@
 {
     [OpenFinder multipleSelectFile:@[@"mp4"] complete:^(NSArray<NSURL *> *urls) {
         //xcrun simctl addvideo <device> <path> [... <path>]
-        NSMutableString *urlStr = [NSMutableString stringWithString:@""];
         for (NSURL *url in urls) {
-            [urlStr appendFormat:@"\"%@\"", [url path]];
-            [urlStr appendString:@" "];
+            NSString *urlPath = [NSString stringWithFormat:@"\"%@\"", [url path]];
+            if (urlPath.length) {
+                shell(@"xcrun simctl addvideo ", @[device.UDID, urlPath]);
+            }
         }
-        if (urlStr.length) {
-            shell(@"xcrun simctl addvideo ", @[device.UDID, urlStr]);
+    }];
+}
+
+- (void)addMediaToDevice:(S_Device *)device
+{
+    [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg", @"mp4", @"mov"] complete:^(NSArray<NSURL *> *urls) {
+        //xcrun simctl addmedia <device> <path> [... <path>]
+        for (NSURL *url in urls) {
+            NSString *urlPath = [NSString stringWithFormat:@"\"%@\"", [url path]];
+            if (urlPath.length) {
+                shell(@"xcrun simctl addmedia ", @[device.UDID, urlPath]);
+            }
         }
     }];
 }

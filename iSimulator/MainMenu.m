@@ -247,6 +247,10 @@ NSInteger const about_Tag = 990;
 {
     [[SimulatorManager shareSimulatorManager] addVideoToDevice:item.representedObject];
 }
+- (void)addMedias:(NSMenuItem *)item
+{
+    [[SimulatorManager shareSimulatorManager] addMediaToDevice:item.representedObject];
+}
 - (void)installApplication:(NSMenuItem *)item
 {
     [[SimulatorManager shareSimulatorManager] installAppInDevice:item.representedObject];
@@ -287,6 +291,8 @@ NSInteger const about_Tag = 990;
     reveal.target = self;
     reveal.representedObject = device;
     reveal.image = [NSImage imageNamed:@"reveal"];
+    
+#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12
     NSMenuItem *photos = [menu addItemWithTitle:@"Add Photos..." action:@selector(addPhotos:) keyEquivalent:@""];
     photos.target = self;
     photos.representedObject = device;
@@ -295,6 +301,15 @@ NSInteger const about_Tag = 990;
     videos.target = self;
     videos.representedObject = device;
     videos.image = [NSImage imageNamed:@"video"];
+#else
+    /** osx 10.12 以后使用新方法 自动区分媒体文件 */
+    NSMenuItem *medias = [menu addItemWithTitle:@"Add Medias..." action:@selector(addMedias:) keyEquivalent:@""];
+    medias.target = self;
+    medias.representedObject = device;
+    medias.image = [NSImage imageNamed:@"video"];
+#endif
+    
+    
     NSMenuItem *install = [menu addItemWithTitle:@"Install Application..." action:@selector(installApplication:) keyEquivalent:@""];
     install.target = self;
     install.representedObject = device;

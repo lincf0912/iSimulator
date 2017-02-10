@@ -6,15 +6,15 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 1.6: 修复已知bug]]></title>
+            <title><![CDATA[Version 1.7: 修复已知bug]]></title>
             <description><![CDATA[<ul>
-                <li>修复启动APP卡死的bug</li>
-                <li>修复跨设备设置APP不成功的bug</li>
-                <li>修复非当前设备安装APP安装错误的bug</li>
+                <li>修复添加图片太多崩溃的bug</li>
+                <li>修复安装app 选择UI，cancel后仍然会触发启动设备</li>
+                <li>osx 10.12版本之后添加相片、视频接口归类为添加媒体，并且支持live photo</li>
                 </ul>
             ]]></description>
-            <pubDate>2017-01-10 17:24:03 GMT</pubDate>
-            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/1.6/iSimulator-1.6.zip" length="3,555,722" type="application/octet-stream" sparkle:version="16" sparkle:shortVersionString="1.6">
+            <pubDate>2017-02-10 14:24:31 GMT</pubDate>
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/1.7/iSimulator-1.7.zip" length="3,556,310" type="application/octet-stream" sparkle:version="17" sparkle:shortVersionString="1.7">
             </enclosure>
         </item>
 	</channel>

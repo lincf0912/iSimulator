@@ -32,6 +32,8 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 - (void)addPhotoToDevice:(S_Device *)device;
 /** 添加视频到设备 */
 - (void)addVideoToDevice:(S_Device *)device;
+/** 添加媒体文件到设备[You can also specify multiple live photos by providing the photo and video files. They will automatically be discovered and imported correctly.] */
+- (void)addMediaToDevice:(S_Device *)device;
 /** 安装模拟器应用 */
 - (void)installAppInDevice:(S_Device *)device;
 /** 删除模拟器 */
