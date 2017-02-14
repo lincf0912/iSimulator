@@ -48,6 +48,10 @@
     // Insert code here to tear down your application
 }
 
+- (void)applicationWillResignActive:(NSNotification *)notification {
+    // Insert code here to do something when your application will resign active
+}
+
 #pragma mark - MainMenuDelegate
 - (void)mainMenuAboutApp:(MainMenu *)mainMenu
 {
