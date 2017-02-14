@@ -21,9 +21,7 @@
 
 NSString *const mainMenuTitle = @"Main Menu";
 NSInteger const recent_max = 5;
-
 NSInteger const about_Tag = 990;
-
 
 @interface MainMenu () <NSMenuDelegate, ApplicationMenuItemDelegate>
 
