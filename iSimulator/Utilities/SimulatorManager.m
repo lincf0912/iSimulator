@@ -220,7 +220,7 @@
     }];
 }
 
-- (void)addPhotoToDevice:(S_Device *)device
+- (void)addPhotoToDevice:(S_Device *)device DEPRECATED_ATTRIBUTE
 {
     [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg"] complete:^(NSArray<NSURL *> *urls) {
         //xcrun simctl addphoto <device> <path> [... <path>]
@@ -233,7 +233,7 @@
     }];
 }
 
-- (void)addVideoToDevice:(S_Device *)device
+- (void)addVideoToDevice:(S_Device *)device DEPRECATED_ATTRIBUTE
 {
     [OpenFinder multipleSelectFile:@[@"mp4"] complete:^(NSArray<NSURL *> *urls) {
         //xcrun simctl addvideo <device> <path> [... <path>]
@@ -248,7 +248,7 @@
 
 - (void)addMediaToDevice:(S_Device *)device
 {
-    [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg", @"mp4", @"mov"] complete:^(NSArray<NSURL *> *urls) {
+    [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg", @"gif", @"mp4", @"mov"] complete:^(NSArray<NSURL *> *urls) {
         //xcrun simctl addmedia <device> <path> [... <path>]
         for (NSURL *url in urls) {
             NSString *urlPath = [NSString stringWithFormat:@"\"%@\"", [url path]];

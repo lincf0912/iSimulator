@@ -29,9 +29,9 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 /** 重置设备 */
 - (void)resetDeviceData:(S_Device *)device;
 /** 添加图片到设备 */
-- (void)addPhotoToDevice:(S_Device *)device;
+- (void)addPhotoToDevice:(S_Device *)device DEPRECATED_ATTRIBUTE;
 /** 添加视频到设备 */
-- (void)addVideoToDevice:(S_Device *)device;
+- (void)addVideoToDevice:(S_Device *)device DEPRECATED_ATTRIBUTE;
 /** 添加媒体文件到设备[You can also specify multiple live photos by providing the photo and video files. They will automatically be discovered and imported correctly.] */
 - (void)addMediaToDevice:(S_Device *)device;
 /** 安装模拟器应用 */
