@@ -6,15 +6,13 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 1.7: 修复已知bug]]></title>
+            <title><![CDATA[Version 1.8: update]]></title>
             <description><![CDATA[<ul>
-                <li>修复添加图片太多崩溃的bug</li>
-                <li>修复安装app 选择UI，cancel后仍然会触发启动设备</li>
-                <li>osx 10.12版本之后添加相片、视频接口归类为添加媒体，并且支持live photo</li>
+                <li>添加媒体格式支持GIF</li>
                 </ul>
             ]]></description>
             <pubDate>2017-02-10 14:24:31 GMT</pubDate>
-            <enclosure url="http://ys-j.ys168.com/283969520/l6I28633IHPIISvhVfG/iSimulator-1.7.zip" length="3,556,310" type="application/octet-stream" sparkle:version="17" sparkle:shortVersionString="1.7">
+            <enclosure url="http://ys-h.ys168.com/283969597/VIt7TWs4J4I742X5N34/iSimulator-1.8.zip" length="3,555,876" type="application/octet-stream" sparkle:version="18" sparkle:shortVersionString="1.8">
             </enclosure>
         </item>
 	</channel>
