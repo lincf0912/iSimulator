@@ -58,7 +58,7 @@ NSInteger const about_Tag = 990;
         [menu addItem:[NSMenuItem separatorItem]];
         
         /** 第三标题 */
-        NSMenuItem *aboutItem  = [[NSMenuItem alloc] initWithTitle:@"About iSimulators" action:@selector(appAbout:) keyEquivalent:@""];
+        NSMenuItem *aboutItem  = [[NSMenuItem alloc] initWithTitle:@"About iSimulator" action:@selector(appAbout:) keyEquivalent:@""];
         aboutItem.tag = about_Tag;
         aboutItem.target = self;
         [menu addItem:aboutItem];
@@ -70,7 +70,7 @@ NSInteger const about_Tag = 990;
         [menu addItem:[NSMenuItem separatorItem]];
         
         /** 第四标题 */
-        NSMenuItem *quitItem  = [[NSMenuItem alloc] initWithTitle:@"Quit iSimulators" action:@selector(appQuit:) keyEquivalent:@"q"];
+        NSMenuItem *quitItem  = [[NSMenuItem alloc] initWithTitle:@"Quit iSimulator" action:@selector(appQuit:) keyEquivalent:@"q"];
         quitItem.target = self;
         [menu addItem:quitItem];
         
