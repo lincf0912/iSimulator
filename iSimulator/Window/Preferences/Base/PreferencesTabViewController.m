@@ -23,6 +23,10 @@
 {
     NSTabViewItem *tabViewItem = self.tabView.selectedTabViewItem;
     self.view.window.title = tabViewItem.viewController.title;
+#if APPSTORE==1
+    [self removeTabViewItem:self.tabViewItems.lastObject];
+#endif
+
 }
 
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(nullable NSTabViewItem *)tabViewItem
