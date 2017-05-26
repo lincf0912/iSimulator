@@ -40,7 +40,9 @@
     NSDate *lastUpdateCheckDate = [[SUUpdater sharedUpdater] lastUpdateCheckDate];
     NSInteger days = [[NSDate date] daysDifferentFromOtherDate:lastUpdateCheckDate];
     if (days >= updateCheckInterval) {
+#if APPSTORE==1
         [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
+#endif
     }
     
 }
