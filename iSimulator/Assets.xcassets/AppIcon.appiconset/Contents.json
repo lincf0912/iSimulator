@@ -3,61 +3,61 @@
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_16px_531835_easyicon.net.png",
+      "filename" : "icon_16x16.png",
       "scale" : "1x"
     },
     {
       "size" : "16x16",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_32px_531835_easyicon.net.png",
+      "filename" : "icon_16x16@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_32px_531835_easyicon.net的副本.png",
+      "filename" : "icon_32x32.png",
       "scale" : "1x"
     },
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_64px_531835_easyicon.net.png",
+      "filename" : "icon_32x32@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_128px_531835_easyicon.net.png",
+      "filename" : "icon_128x128.png",
       "scale" : "1x"
     },
     {
       "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_256px.png",
+      "filename" : "icon_128x128@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_256px的副本.png",
+      "filename" : "icon_256x256.png",
       "scale" : "1x"
     },
     {
       "size" : "256x256",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_512px_531835_easyicon.net-2.png",
+      "filename" : "icon_256x256@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_512px_531835_easyicon.net-2的副本.png",
+      "filename" : "icon_512x512.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "iPhone_Simulator_512px_531835_easyicon.net-2的副本-1.png",
+      "filename" : "icon_512x512@2x.png",
       "scale" : "2x"
     }
   ],
