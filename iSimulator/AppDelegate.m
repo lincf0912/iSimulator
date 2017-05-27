@@ -9,14 +9,12 @@
 #import "AppDelegate.h"
 #import "MainMenu.h"
 
-#import <Sparkle/Sparkle.h>
-
 #import "NSUserDefaults+KeyPath.h"
 #import "NSDate+common.h"
 
 #import "AboutWindowController.h"
 
-@interface AppDelegate () <MainMenuDelegate, SUUpdaterDelegate>
+@interface AppDelegate () <MainMenuDelegate>
 
 @property (nonatomic, strong) MainMenu *menu;
 
@@ -33,17 +31,7 @@
     self.menu = [MainMenu new];
     self.menu.itemDelegate = self;
     [self.menu start];
-    
-    [[SUUpdater sharedUpdater] setSendsSystemProfile:YES];
-    /** 版本更新 */
-    NSInteger updateCheckInterval = [NSUserDefaults updateOptionDesc];
-    NSDate *lastUpdateCheckDate = [[SUUpdater sharedUpdater] lastUpdateCheckDate];
-    NSInteger days = [[NSDate date] daysDifferentFromOtherDate:lastUpdateCheckDate];
-    if (days >= updateCheckInterval) {
-#if APPSTORE==1
-        [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
-#endif
-    }
+
     
 }
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -79,16 +67,6 @@
 - (void)mainMenuQuitApp:(MainMenu *)mainMenu
 {
     [NSApp terminate:self]; 
-}
-
-#pragma mark - Updater Delegate
-
-- (NSString *)feedURLStringForUpdater:(SUUpdater *)updater
-{
-    NSString *feedURLString = [NSBundle mainBundle].infoDictionary[@"SUFeedURL"];
-    NSAssert(feedURLString != nil, @"A feed URL should be set in Info.plist");
-    
-    return feedURLString;
 }
 
 @end

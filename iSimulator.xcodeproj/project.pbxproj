@@ -20,8 +20,6 @@
 		6F1E0D371DD07D4C005160D0 /* URLContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D361DD07D4C005160D0 /* URLContent.m */; };
 		6F1E0D3A1DD086C8005160D0 /* Shell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D391DD086C8005160D0 /* Shell.m */; };
 		6F1E0D3E1DD165BB005160D0 /* iActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E0D3D1DD165BB005160D0 /* iActivityIndicatorView.m */; };
-		6F1E8EF71DF7AEB100A7D109 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; };
-		6F1E8EF81DF7AEBC00A7D109 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F31FEFB1DDAA71500BB307D /* OpenFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEFA1DDAA71500BB307D /* OpenFinder.m */; };
 		6F32A5821DE82EFC00FEA1B7 /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F32A57C1DE82EFC00FEA1B7 /* AboutWindowController.m */; };
 		6F32A5831DE82EFC00FEA1B7 /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F32A57D1DE82EFC00FEA1B7 /* AboutWindowController.xib */; };
@@ -48,7 +46,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6F1E8EF81DF7AEBC00A7D109 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,7 +92,6 @@
 		6F32A5891DE830B400FEA1B7 /* AdvancedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedViewController.m; sourceTree = "<group>"; };
 		6F32A5921DEBC47E00FEA1B7 /* UpdateOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOption.h; sourceTree = "<group>"; };
 		6F32A5931DEBC47E00FEA1B7 /* UpdateOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOption.m; sourceTree = "<group>"; };
-		6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		6F3D92291E136D590037C5A5 /* BaseSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSettingViewController.h; sourceTree = "<group>"; };
 		6F3D922A1E136D590037C5A5 /* BaseSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSettingViewController.m; sourceTree = "<group>"; };
 		6F4626FE1DD00B9300355984 /* iSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F1E8EF71DF7AEB100A7D109 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +244,6 @@
 		6F32A5951DEBCC0D00FEA1B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6F32A5961DEBCC0D00FEA1B7 /* Sparkle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -358,7 +352,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -553,7 +547,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = "APPSTORE=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = iSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miracle.iSimulator;
