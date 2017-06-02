@@ -6,13 +6,15 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 1.8: update]]></title>
+            <title><![CDATA[Version 1.9: update]]></title>
             <description><![CDATA[<ul>
                 <li>添加媒体格式支持GIF</li>
+                <li>修复app sandbox崩溃的问题</li>
+                <li>更新AppIcon</li>
                 </ul>
             ]]></description>
-            <pubDate>2017-02-10 14:24:31 GMT</pubDate>
-            <enclosure url="http://ys-h.ys168.com/283969597/VIt7TWs4J4I742X5N34/iSimulator-1.8.zip" length="3,555,876" type="application/octet-stream" sparkle:version="18" sparkle:shortVersionString="1.8">
+            <pubDate>2017-06-02 17:47:00 GMT</pubDate>
+            <enclosure url="http://ys-d.ys168.com/283969546/g7M3I456IGLPLTTLRtkM/iSimulator-1.9.zip" length="1,908,225" type="application/octet-stream" sparkle:version="19" sparkle:shortVersionString="1.9">
             </enclosure>
         </item>
 	</channel>
