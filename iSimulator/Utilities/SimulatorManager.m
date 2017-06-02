@@ -63,6 +63,13 @@
         NSString *jsonString = shell(@"/usr/bin/xcrun", @[@"simctl", @"list", @"-j", @"devices"]);
         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        if ([json isKindOfClass:[NSDictionary class]] == NO) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.resultBlock(@[], @[]);
+                if (complete) complete();
+            });
+            return;
+        }
         /** 数据源容器 */
         NSMutableArray *container = [NSMutableArray arrayWithCapacity:5];
         NSMutableArray *appList = [NSMutableArray arrayWithCapacity:5];
