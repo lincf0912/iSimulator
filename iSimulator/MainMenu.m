@@ -239,6 +239,7 @@ NSInteger const about_Tag = 990;
 {
     [[SimulatorManager shareSimulatorManager] openDevicePath:item.representedObject];
 }
+#if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12
 - (void)addPhotos:(NSMenuItem *)item
 {
     [[SimulatorManager shareSimulatorManager] addPhotoToDevice:item.representedObject];
@@ -247,6 +248,7 @@ NSInteger const about_Tag = 990;
 {
     [[SimulatorManager shareSimulatorManager] addVideoToDevice:item.representedObject];
 }
+#endif
 - (void)addMedias:(NSMenuItem *)item
 {
     [[SimulatorManager shareSimulatorManager] addMediaToDevice:item.representedObject];

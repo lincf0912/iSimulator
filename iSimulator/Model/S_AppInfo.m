@@ -29,7 +29,14 @@
         _seialQueue = dispatch_queue_create("S_AppInfo_Size_Queue", DISPATCH_QUEUE_SERIAL);
         _UDID = UDID;
         NSArray *dirEnumerator = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:url includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants|NSDirectoryEnumerationSkipsHiddenFiles error:nil];
-        NSURL *appUrl = dirEnumerator.lastObject;
+        NSURL *appUrl = nil;
+        for (NSURL *dirUrl in dirEnumerator) {
+            /** 获取应用目录 */
+            if ([[dirUrl lastPathComponent] hasSuffix:@"app"]) {
+                appUrl = dirUrl;
+                break;
+            }
+        }
         if (appUrl == nil) {
             return nil;
         }

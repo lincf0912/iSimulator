@@ -24,7 +24,7 @@ extern NSString *const devicePlist;
 extern NSString *const mobileContainerManagerPlist_Identifier;
 
 /** 首路径 */
-OBJC_EXTERN NSURL * devicePathURL();
+OBJC_EXTERN NSURL * devicePathURL(void);
 /** 设备路径 */
 OBJC_EXTERN NSURL * deviceURL(NSString *UDID);
 /** 设备数据路径 */
@@ -34,7 +34,7 @@ OBJC_EXTERN NSURL * applicationPathURL(NSString *UDID);
 /** 设备所属应用路径 */
 OBJC_EXTERN NSURL * applicationForDeviceURL(NSString *UDID);
 /** 设备文件 */
-OBJC_EXTERN NSURL * deviceSetPlistURL();
-OBJC_EXTERN NSURL * devicePlistURL();
+OBJC_EXTERN NSURL * deviceSetPlistURL(void);
+OBJC_EXTERN NSURL * devicePlistURL(void);
 /** 应用路径匹配文件 */
 OBJC_EXTERN NSURL * mobileContainerManagerPlistURL(NSURL *url);

@@ -56,7 +56,7 @@
     [self loadData:nil];
 }
 
-- (void)loadData:(void (^)())complete
+- (void)loadData:(void (^)(void))complete
 {
     if (self.resultBlock == nil) return;
     dispatch_async(self.seialQueue, ^{
@@ -337,9 +337,10 @@
         if (returnCode == NSAlertFirstButtonReturn) {
             NSURL *appUrl = [self getAppDocumentUrl:appInfo];
             if (appUrl) {
-                shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Documents/*"]]);
-                shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"Library/*"]]);
-                shell(@"rm -rf ", @[[appUrl.path stringByAppendingPathComponent:@"tmp/*"]]);
+                NSArray *dirEnumerator = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:appUrl includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants|NSDirectoryEnumerationSkipsHiddenFiles error:nil];
+                for (NSURL *dirUrl in dirEnumerator) {
+                    shell(@"rm -rf ", @[[dirUrl.path stringByAppendingPathComponent:@"*"]]);
+                }
             }
         }
     }];

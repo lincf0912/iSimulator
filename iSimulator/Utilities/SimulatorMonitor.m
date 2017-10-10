@@ -17,7 +17,7 @@ dispatch_async(dispatch_get_main_queue(), block);\
 
 typedef void(^dispatch_cancelable_block_t)(BOOL cancel);
 
-dispatch_cancelable_block_t _dispatch_block_t(NSTimeInterval delay, void(^block)())
+dispatch_cancelable_block_t _dispatch_block_t(NSTimeInterval delay, void(^block)(void))
 {
     __block dispatch_cancelable_block_t cancelBlock = nil;
     dispatch_cancelable_block_t delayBlcok = ^(BOOL cancel){
