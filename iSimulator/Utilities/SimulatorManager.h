@@ -18,6 +18,8 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 - (void)loadSimulators:(resultBlock)complete;
 /* 重新加载设备列表 */
 - (void)reloadSimulators;
+/* 删除所有不可用的模拟器 */
+- (void)removeUnsimulators:(void (^)(void))complete;
 
 /** 异步获取沙盒大小 */
 - (void)getSandboxSize:(S_AppInfo *)app complete:(void (^)(long long sandboxSize))complete;

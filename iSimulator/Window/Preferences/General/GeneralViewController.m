@@ -11,6 +11,8 @@
 #import "NSUserDefaults+KeyPath.h"
 
 #import "SimulatorManager.h"
+#import "iActivityIndicatorView.h"
+#import "NSAlert+Block.h"
 
 NSString *const startAtLoginName = @"iSimulator_startLogin";
 
@@ -75,4 +77,23 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
     [NSUserDefaults setSimulatorDisplay:[(NSButton *)sender integerValue]];
     [[SimulatorManager shareSimulatorManager] reloadSimulators];
 }
+
+- (IBAction)iSimulator_deleteUnsimulator_action:(NSButton *)sender {
+    
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to delete all unavailable Simulator?" message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
+    [alert showSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            sender.enabled = NO;
+            iActivityIndicatorView *indicator = [[iActivityIndicatorView alloc] initWithFrame:sender.frame];
+            [sender.superview addSubview:indicator];
+            [[SimulatorManager shareSimulatorManager] removeUnsimulators:^{
+                [indicator removeFromSuperview];
+                sender.enabled = YES;
+            }];
+        }
+    }];
+    
+    
+}
+
 @end

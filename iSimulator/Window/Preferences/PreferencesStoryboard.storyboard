@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="g1X-mU-pNk">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="g1X-mU-pNk">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,12 +10,15 @@
         <scene sceneID="wJv-tW-njN">
             <objects>
                 <windowController id="g1X-mU-pNk" sceneMemberID="viewController">
-                    <window key="window" title="iSimulator Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="LRz-Bu-UX1">
+                    <window key="window" title="iSimulator Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="LRz-Bu-UX1">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" managed="YES" participatesInCycle="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="430" y="341" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+                        <connections>
+                            <outlet property="delegate" destination="g1X-mU-pNk" id="IOF-cD-Z2m"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="H1Z-Dg-Yir" kind="relationship" relationship="window.shadowedContentViewController" id="1qQ-uc-IZ1"/>
@@ -38,12 +41,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
-                        <tabViewItems/>
                         <connections>
                             <outlet property="delegate" destination="H1Z-Dg-Yir" id="Wsw-2I-3ha"/>
                         </connections>
                     </tabView>
                     <connections>
+                        <outlet property="tabView" destination="eec-iy-uj8" id="8zQ-i8-uYB"/>
                         <segue destination="O3b-Io-kot" kind="relationship" relationship="tabItems" id="4aY-0V-AtL"/>
                         <segue destination="rmQ-te-eNr" kind="relationship" relationship="tabItems" id="1Av-kd-o0s"/>
                     </connections>
@@ -57,18 +60,18 @@
             <objects>
                 <viewController title="General" id="O3b-Io-kot" customClass="GeneralViewController" sceneMemberID="viewController">
                     <view key="view" id="7mt-92-Cgh">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="122"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="176"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="MTW-GN-70p">
-                                <rect key="frame" x="18" y="86" width="104" height="18"/>
+                                <rect key="frame" x="18" y="139" width="104" height="19"/>
                                 <buttonCell key="cell" type="check" title="Start at Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="OYx-s8-hjD">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="DIH-rQ-aG1">
-                                <rect key="frame" x="18" y="40" width="233" height="18"/>
+                            <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="DIH-rQ-aG1">
+                                <rect key="frame" x="18" y="93" width="233" height="18"/>
                                 <buttonCell key="cell" type="check" title="[no application] Simulator display" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zJl-7w-qu2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -78,34 +81,56 @@
                                     <binding destination="RdE-sd-F4i" name="value" keyPath="values.simulatorDisplay" id="v3I-Wx-CJN"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-r3-kF4">
-                                <rect key="frame" x="18" y="66" width="289" height="14"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-r3-kF4">
+                                <rect key="frame" x="18" y="119" width="289" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Automatically opens the app when you start your Mac." id="a5y-ss-h0q">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fp0-iD-rW7">
-                                <rect key="frame" x="18" y="20" width="257" height="14"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fp0-iD-rW7">
+                                <rect key="frame" x="18" y="73" width="257" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allow [no application] simulator display on menu" id="oQY-0X-HwU">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-cc-ARa">
+                                <rect key="frame" x="18" y="20" width="167" height="14"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Delete all unavailable simulator" id="epc-yM-Rxd">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LN2-n7-BcV">
+                                <rect key="frame" x="14" y="35" width="160" height="32"/>
+                                <buttonCell key="cell" type="push" title="Delete un-simulator" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ccp-W4-GJc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="iSimulator_deleteUnsimulator_action:" target="O3b-Io-kot" id="2C9-gk-FFI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Fp0-iD-rW7" firstAttribute="top" secondItem="DIH-rQ-aG1" secondAttribute="bottom" constant="8" id="3yo-fz-qlN"/>
                             <constraint firstItem="fCk-r3-kF4" firstAttribute="leading" secondItem="MTW-GN-70p" secondAttribute="leading" id="9hA-8f-oQQ"/>
                             <constraint firstItem="DIH-rQ-aG1" firstAttribute="top" secondItem="fCk-r3-kF4" secondAttribute="bottom" constant="10" id="ARJ-yF-NTt"/>
+                            <constraint firstItem="fd3-cc-ARa" firstAttribute="leading" secondItem="LN2-n7-BcV" secondAttribute="leading" id="BKU-VS-5es"/>
                             <constraint firstItem="DIH-rQ-aG1" firstAttribute="leading" secondItem="MTW-GN-70p" secondAttribute="leading" id="DdG-Tj-3Lu"/>
                             <constraint firstItem="Fp0-iD-rW7" firstAttribute="leading" secondItem="DIH-rQ-aG1" secondAttribute="leading" id="TDD-xd-xtq"/>
                             <constraint firstItem="MTW-GN-70p" firstAttribute="leading" secondItem="7mt-92-Cgh" secondAttribute="leading" constant="20" symbolic="YES" id="VOw-jd-DtW"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fCk-r3-kF4" secondAttribute="trailing" constant="145" id="Vw6-OP-xEe"/>
+                            <constraint firstAttribute="bottom" secondItem="fd3-cc-ARa" secondAttribute="bottom" constant="20" symbolic="YES" id="chG-Kx-Nce"/>
+                            <constraint firstItem="LN2-n7-BcV" firstAttribute="top" secondItem="Fp0-iD-rW7" secondAttribute="bottom" constant="10" id="eJr-Z1-1hK"/>
                             <constraint firstItem="fCk-r3-kF4" firstAttribute="top" secondItem="MTW-GN-70p" secondAttribute="bottom" constant="8" id="eYR-zg-V4M"/>
-                            <constraint firstAttribute="bottom" secondItem="Fp0-iD-rW7" secondAttribute="bottom" constant="20" symbolic="YES" id="jKe-55-Rht"/>
+                            <constraint firstItem="fd3-cc-ARa" firstAttribute="top" secondItem="LN2-n7-BcV" secondAttribute="bottom" constant="8" id="ixp-G8-pwh"/>
                             <constraint firstItem="MTW-GN-70p" firstAttribute="top" secondItem="7mt-92-Cgh" secondAttribute="top" constant="20" symbolic="YES" id="p8a-oK-Pkp"/>
+                            <constraint firstItem="LN2-n7-BcV" firstAttribute="leading" secondItem="MTW-GN-70p" secondAttribute="leading" id="wsA-pr-8Rp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -115,7 +140,7 @@
                 <customObject id="ER7-fY-ZXK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="RdE-sd-F4i"/>
             </objects>
-            <point key="canvasLocation" x="802" y="14"/>
+            <point key="canvasLocation" x="802" y="41"/>
         </scene>
         <!--Advanced-->
         <scene sceneID="vwg-Rk-q7N">
@@ -139,7 +164,7 @@
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iZO-04-n4L" userLabel="Default Activation Duration">
-                                <rect key="frame" x="255" y="57" width="142" height="26"/>
+                                <rect key="frame" x="255" y="57" width="143" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Not Implemented" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YCe-mI-3lH" id="hgg-Yu-QAc">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>

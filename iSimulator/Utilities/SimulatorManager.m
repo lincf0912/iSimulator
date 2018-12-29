@@ -59,10 +59,8 @@
 - (void)loadData:(void (^)(void))complete
 {
     if (self.resultBlock == nil) return;
-    dispatch_async(self.seialQueue, ^{
-        NSString *jsonString = shell(@"/usr/bin/xcrun", @[@"simctl", @"list", @"-j", @"devices"]);
-        NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    
+    [self loadDevicesJson_async:^(NSDictionary *json) {
         if ([json isKindOfClass:[NSDictionary class]] == NO) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.resultBlock(@[], @[]);
@@ -114,6 +112,46 @@
             [self startMointor];
             if (complete) complete();
         });
+    }];
+}
+
+
+- (void)loadDevicesJson_async:(void (^)(NSDictionary *json))complete
+{
+    dispatch_async(self.seialQueue, ^{
+        NSString *jsonString = shell(@"/usr/bin/xcrun", @[@"simctl", @"list", @"-j", @"devices"]);
+        NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        if ([json isKindOfClass:[NSDictionary class]] == NO) {
+            if (complete) complete(nil);
+        } else {
+            if (complete) complete(json);
+        }
+    });
+}
+
+/* 删除所有不可用的模拟器 */
+- (void)removeUnsimulators:(void (^)(void))complete
+{
+    dispatch_async(self.seialQueue, ^{
+        NSArray *container = self.container;
+        for (NSDictionary *dict in container) {
+            for (NSString *key in dict) {
+                NSArray *devices = dict[key];
+                for (S_Device *device in devices) {
+                    if (device.isUnavailable) {
+                        shell(@"xcrun simctl delete ", @[device.UDID]);
+                        NSURL *deviceURL = [self getDeviceUrl:device];
+                        [[NSFileManager defaultManager] removeItemAtURL:deviceURL error:nil];
+                    }
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (complete) {
+                complete();
+            }
+        });
     });
 }
 
@@ -128,7 +166,8 @@
         void (^monitorUrl)(SimulatorMonitor *) = ^(SimulatorMonitor *monitor){
             /** 监听设备URL */
             [monitor addMonitor:devicePathURL()];
-            for (NSDictionary *dict in weakSelf.container) {
+            NSArray *container = weakSelf.container;
+            for (NSDictionary *dict in container) {
                 for (NSString *key in dict) {
                     NSArray *devices = dict[key];
                     for (S_Device *device in devices) {

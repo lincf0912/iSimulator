@@ -6,13 +6,13 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 2.0: update]]></title>
+            <title><![CDATA[Version 2.1: update]]></title>
             <description><![CDATA[<ul>
-                <li>兼容 OS X 10.13</li>
+                <li>偏好设置：新增删除不可用的模拟器</li>
                 </ul>
             ]]></description>
-            <pubDate>2017-10-10 14:11:53 GMT</pubDate>
-            <enclosure url="http://ys-n.ys168.com/283969543/hVfSkJl6I36633I4JL38/iSimulator-2.0.zip" length="2,414,132" type="application/octet-stream" sparkle:version="20" sparkle:shortVersionString="2.0">
+            <pubDate>2018-12-29 14:32:53 GMT</pubDate>
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.1/iSimulator-2.1.zip" length="2,417,442" type="application/octet-stream" sparkle:version="21" sparkle:shortVersionString="2.1">
             </enclosure>
         </item>
 	</channel>
