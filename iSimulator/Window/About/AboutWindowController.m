@@ -29,7 +29,7 @@
     self.desc = @"Simple & Strong";
 }
 - (IBAction)linAction:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/lincf0912/iSimulator"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://lincf0912.github.io/iSimulator/"]];
 }
 
 @end
