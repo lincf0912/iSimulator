@@ -15,14 +15,16 @@ NSString * shell(NSString *launchPath ,NSArray<NSString *> *arguments)
         char cmd[512];
         NSString *resultStr = @"";
         sprintf(cmd, "%s %s ; echo $?", [launchPath UTF8String], [(arguments ? [arguments componentsJoinedByString:@" "]  : @"") UTF8String]);
+        NSString *cmdStr = nil;
         if ((fp = popen(cmd, "r")) != NULL)
         {
             while (fgets(cmd, sizeof(cmd), fp) != NULL) {
                 if (cmd[strlen(cmd) - 1] == '\n') {
                     cmd[strlen(cmd) - 1] = '\0'; //去除换行符
                 }
-                if (![@"0" isEqualToString:[NSString stringWithUTF8String:cmd]]) {
-                    resultStr = [resultStr stringByAppendingFormat:@"%s", cmd];
+                cmdStr = [NSString stringWithUTF8String:cmd];
+                if (![@"0" isEqualToString:cmdStr]) {
+                    resultStr = [resultStr stringByAppendingString:cmdStr];
                 }
             }
             //            fgets(cmd, sizeof(cmd), fp);
