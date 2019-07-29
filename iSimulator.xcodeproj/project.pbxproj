@@ -114,6 +114,7 @@
 		6FB9C2D31DEC075700616765 /* NSDate+common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+common.m"; sourceTree = "<group>"; };
 		6FB9C2D51DEC092500616765 /* LoginItemsRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsRegistry.h; sourceTree = "<group>"; };
 		6FB9C2D61DEC092500616765 /* LoginItemsRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginItemsRegistry.m; sourceTree = "<group>"; };
+		C775FD1122802A2400D973B6 /* iSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iSimulator.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +285,7 @@
 		6F4627001DD00B9300355984 /* iSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				C775FD1122802A2400D973B6 /* iSimulator.entitlements */,
 				6F1E0D311DD0797C005160D0 /* Header */,
 				6F1D5FD61DD321450056ED24 /* Category */,
 				6F1E0D231DD071E2005160D0 /* Model */,
@@ -354,6 +356,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3VDRUN62M8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -362,6 +369,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
