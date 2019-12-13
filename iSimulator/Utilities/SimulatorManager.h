@@ -20,6 +20,10 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 - (void)reloadSimulators;
 /* 删除所有不可用的模拟器 */
 - (void)removeUnsimulators:(void (^)(void))complete;
+/** 获取最新的设备版本 */
+- (NSString *)latestDeviceVersion;
+/** 删除旧的模拟器 */
+- (void)removeOldSimulators:(void (^)(void))complete;
 
 /** 异步获取沙盒大小 */
 - (void)getSandboxSize:(S_AppInfo *)app complete:(void (^)(long long sandboxSize))complete;

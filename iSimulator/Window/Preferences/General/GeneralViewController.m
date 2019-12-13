@@ -80,7 +80,7 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
 
 - (IBAction)iSimulator_deleteUnsimulator_action:(NSButton *)sender {
     
-    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to delete all unavailable Simulator?" message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
+    NSAlert *alert = [NSAlert alertWithInfoTitle:@"Are you sure you want to delete all unavailable Simulators?" message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
     [alert showSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
             sender.enabled = NO;
@@ -92,8 +92,22 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
             }];
         }
     }];
+}
+
+- (IBAction)iSimulator_deleteOldSimulator_action:(NSButton *)sender {
     
-    
+    NSAlert *alert = [NSAlert alertWithInfoTitle:[NSString stringWithFormat:@"Are you sure to keep only the latest simulators(%@)?", [[SimulatorManager shareSimulatorManager] latestDeviceVersion]] message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
+    [alert showSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            sender.enabled = NO;
+            iActivityIndicatorView *indicator = [[iActivityIndicatorView alloc] initWithFrame:sender.frame];
+            [sender.superview addSubview:indicator];
+            [[SimulatorManager shareSimulatorManager] removeOldSimulators:^{
+                [indicator removeFromSuperview];
+                sender.enabled = YES;
+            }];
+        }
+    }];
 }
 
 @end

@@ -155,6 +155,47 @@
     });
 }
 
+/** 获取最新的设备版本 */
+- (NSString *)latestDeviceVersion
+{
+    NSArray *container = self.container;
+    NSMutableArray <NSString *>*versions = [NSMutableArray array];
+    for (NSDictionary *dict in container) {
+        [versions addObjectsFromArray:dict.allKeys];
+    }
+    [versions sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2 options:NSCaseInsensitiveSearch|NSNumericSearch];
+    }];
+    return versions.lastObject;
+}
+
+/** 删除旧的模拟器 */
+- (void)removeOldSimulators:(void (^)(void))complete
+{
+    dispatch_async(self.seialQueue, ^{
+        NSString *latestVersion = [self latestDeviceVersion];
+        NSArray *container = self.container;
+        for (NSDictionary *dict in container) {
+            for (NSString *key in dict) {
+                if ([key isEqualToString:latestVersion]) {
+                    continue;
+                }
+                NSArray *devices = dict[key];
+                for (S_Device *device in devices) {
+                    shell(@"xcrun simctl delete ", @[device.UDID]);
+                    NSURL *deviceURL = [self getDeviceUrl:device];
+                    [[NSFileManager defaultManager] removeItemAtURL:deviceURL error:nil];
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (complete) {
+                complete();
+            }
+        });
+    });
+}
+
 - (void)startMointor
 {
     /** 开启监视 */
