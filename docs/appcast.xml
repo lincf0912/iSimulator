@@ -6,13 +6,13 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 2.2: update]]></title>
+            <title><![CDATA[Version 2.3: update]]></title>
             <description><![CDATA[<ul>
-                <li>修复使用iPhone XR时崩溃的问题</li>
+                <li>新增可删除旧模拟器</li>
                 </ul>
             ]]></description>
-            <pubDate>2019-07-29 09:37:28 GMT</pubDate>
-            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.2/iSimulator-2.2.zip" length="2,403,251" type="application/octet-stream" sparkle:version="22" sparkle:shortVersionString="2.2">
+            <pubDate>2019-12-13 10:24:22 GMT</pubDate>
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.2/iSimulator-2.2.zip" length="2,430,869" type="application/octet-stream" sparkle:version="23" sparkle:shortVersionString="2.3">
             </enclosure>
         </item>
 	</channel>
