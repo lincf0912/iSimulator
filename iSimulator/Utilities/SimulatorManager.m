@@ -75,29 +75,26 @@
         NSDictionary *devices = json[@"devices"];
         /** 设备版本 */
         for (NSString *version in devices) {
-            /** 筛选iOS模拟器 */
-            if ([version containsString:@"iOS"]) {
-                /** 筛选可利用的模拟器 */
-                NSMutableArray *dataList = [NSMutableArray array];
-                NSArray *simulators = devices[version];
-                for (NSDictionary *sim in simulators) {
-                    S_Device *d = [[S_Device alloc] initWithDictionary:sim];
-                    [dataList addObject:d];
-                    if (!d.isUnavailable) {
-                        /** 可用模拟器才添加到最近列表 */
-                        [appList addObjectsFromArray:d.appList];
-                    }
+            /** 筛选可利用的模拟器 */
+            NSMutableArray *dataList = [NSMutableArray array];
+            NSArray *simulators = devices[version];
+            for (NSDictionary *sim in simulators) {
+                S_Device *d = [[S_Device alloc] initWithDictionary:sim];
+                [dataList addObject:d];
+                if (!d.isUnavailable) {
+                    /** 可用模拟器才添加到最近列表 */
+                    [appList addObjectsFromArray:d.appList];
                 }
-                if (dataList.count) {
-                    /** 过滤历史模拟器 */
-                    NSString *key = version;
-                    NSString *oldVersion = @"com.apple.CoreSimulator.SimRuntime.";
-                    if ([key containsString:oldVersion]) {
-                        key = [[key stringByReplacingOccurrencesOfString:oldVersion withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@"."];
-                        key = [key stringByReplacingCharactersInRange:[key rangeOfString:@"."] withString:@" "];
-                    }
-                    [container addObject:@{key:dataList}];
+            }
+            if (dataList.count) {
+                /** 过滤历史模拟器 */
+                NSString *key = version;
+                NSString *oldVersion = @"com.apple.CoreSimulator.SimRuntime.";
+                if ([key containsString:oldVersion]) {
+                    key = [[key stringByReplacingOccurrencesOfString:oldVersion withString:@""] stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+                    key = [key stringByReplacingCharactersInRange:[key rangeOfString:@"."] withString:@" "];
                 }
+                [container addObject:@{key:dataList}];
             }
         }
         /** 筛选最近使用应用 */
@@ -335,7 +332,7 @@
 
 - (void)addMediaToDevice:(S_Device *)device
 {
-    [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg", @"gif", @"mp4", @"mov"] complete:^(NSArray<NSURL *> *urls) {
+    [OpenFinder multipleSelectFile:@[@"png", @"jpg", @"jpeg", @"HEIC", @"gif", @"mp4", @"mov"] complete:^(NSArray<NSURL *> *urls) {
         //xcrun simctl addmedia <device> <path> [... <path>]
         for (NSURL *url in urls) {
             NSString *urlPath = [NSString stringWithFormat:@"\"%@\"", [url path]];
