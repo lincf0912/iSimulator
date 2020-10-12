@@ -153,28 +153,50 @@
 }
 
 /** 获取最新的设备版本 */
-- (NSString *)latestDeviceVersion
+- (NSArray<NSString *>*)latestDeviceVersions
 {
     NSArray *container = self.container;
     NSMutableArray <NSString *>*versions = [NSMutableArray array];
     for (NSDictionary *dict in container) {
         [versions addObjectsFromArray:dict.allKeys];
     }
-    [versions sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return [obj1 compare:obj2 options:NSCaseInsensitiveSearch|NSNumericSearch];
+    // 版本分类，区分不同的系统
+    NSMutableDictionary *deviceVersion = [NSMutableDictionary dictionary];
+    NSArray *arrVersion = nil;
+    for (NSString *version in versions) {
+        arrVersion = [version componentsSeparatedByString:@" "];
+        if (arrVersion.count == 2) {
+            NSMutableArray *deviceVersionDesc = [deviceVersion objectForKey:arrVersion.firstObject];
+            if (deviceVersionDesc == nil) {
+                deviceVersionDesc = [NSMutableArray array];
+                [deviceVersion setObject:deviceVersionDesc forKey:arrVersion.firstObject];
+            }
+            [deviceVersionDesc addObject:version];
+        }
+    }
+    
+    NSMutableArray *latestVersions = [NSMutableArray array];
+    
+    [deviceVersion.allValues enumerateObjectsUsingBlock:^(NSMutableArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            return [obj1 compare:obj2 options:NSCaseInsensitiveSearch|NSNumericSearch];
+        }];
+        [latestVersions addObject:obj.lastObject];
     }];
-    return versions.lastObject;
+    
+    
+    return [latestVersions copy];
 }
 
 /** 删除旧的模拟器 */
 - (void)removeOldSimulators:(void (^)(void))complete
 {
     dispatch_async(self.seialQueue, ^{
-        NSString *latestVersion = [self latestDeviceVersion];
+        NSArray<NSString *>*latestVersions = [self latestDeviceVersions];
         NSArray *container = self.container;
         for (NSDictionary *dict in container) {
             for (NSString *key in dict) {
-                if ([key isEqualToString:latestVersion]) {
+                if ([latestVersions containsObject:key]) {
                     continue;
                 }
                 NSArray *devices = dict[key];

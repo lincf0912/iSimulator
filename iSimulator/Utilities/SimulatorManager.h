@@ -21,7 +21,7 @@ typedef void (^resultBlock)(NSArray<NSDictionary <NSString *, NSArray <S_Device 
 /* 删除所有不可用的模拟器 */
 - (void)removeUnsimulators:(void (^)(void))complete;
 /** 获取最新的设备版本 */
-- (NSString *)latestDeviceVersion;
+- (NSArray<NSString *>*)latestDeviceVersions;
 /** 删除旧的模拟器 */
 - (void)removeOldSimulators:(void (^)(void))complete;
 

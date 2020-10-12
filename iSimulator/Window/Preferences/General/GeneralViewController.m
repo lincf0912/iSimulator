@@ -96,7 +96,7 @@ NSString *const startAtLoginName = @"iSimulator_startLogin";
 
 - (IBAction)iSimulator_deleteOldSimulator_action:(NSButton *)sender {
     
-    NSAlert *alert = [NSAlert alertWithInfoTitle:[NSString stringWithFormat:@"Are you sure to keep only the latest simulators(%@)?", [[SimulatorManager shareSimulatorManager] latestDeviceVersion]] message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
+    NSAlert *alert = [NSAlert alertWithInfoTitle:[NSString stringWithFormat:@"Are you sure to keep only the latest simulators(%@)?", [[SimulatorManager shareSimulatorManager] latestDeviceVersions]] message:@"Permanent and unrecoverable，it cannot turn back into its previous stage." cancelButtonTitle:@"Delete" otherButtonTitles:@[@"Don't Delete"]];
     [alert showSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
             sender.enabled = NO;
