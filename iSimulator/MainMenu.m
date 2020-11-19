@@ -99,7 +99,7 @@ NSInteger const about_Tag = 990;
         
         NSInteger nextIndex = 0;
         
-        if (deviceList.count && recentList.count) {
+        if (recentList.count) {
             /** 第一标题 */
             NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"Recent Apps"];
             [menu insertItem:recentApps atIndex:nextIndex++];
@@ -118,7 +118,16 @@ NSInteger const about_Tag = 990;
             }
             
             [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
-            
+        } else {
+            /** 第一标题 */
+            NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"NO Simulators"];
+            [menu insertItem:recentApps atIndex:nextIndex++];
+            [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
+        }
+        
+        
+        if (deviceList.count) {
+            NSInteger tempNextIndex = nextIndex;
             /** 第二标题 */
             for (NSDictionary *allDevice in deviceList) {
                 for (NSString *version in allDevice) {
@@ -166,14 +175,10 @@ NSInteger const about_Tag = 990;
                     }
                 }
             }
-            /** 数据 */
-            [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
-            
-        } else {
-            /** 第一标题 */
-            NSMenuItem *recentApps = [MainMenu createTipsItemWithTitle:@"NO Simulators"];
-            [menu insertItem:recentApps atIndex:nextIndex++];
-            [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];
+            if (nextIndex > tempNextIndex) {
+                /** 数据 */
+                [menu insertItem:[NSMenuItem separatorItem] atIndex:nextIndex++];                
+            }
         }
         
         [menu update];
