@@ -6,12 +6,12 @@
 		<description>The most recent changes for iSimulator.</description>
 		<language>en</language>
         <item>
-            <title><![CDATA[Version 2.5: update]]></title>
+            <title><![CDATA[Version 2.6: update]]></title>
             <description><![CDATA[<ul>
-                <li>修复删除旧版本模拟器的bug</li>
+                <li>修复没有最近使用列表时，无法显示所有设备的bug</li>
             </ul>]]></description>
-            <pubDate>2020-10-12 10:23:57 GMT</pubDate>
-            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.5/iSimulator-2.5.zip" length="2,432,619" type="application/octet-stream" sparkle:version="25" sparkle:shortVersionString="2.5">
+            <pubDate>2020-11-19 16:13:20 GMT</pubDate>
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.5/iSimulator-2.6.zip" length="3,374,294" type="application/octet-stream" sparkle:version="26" sparkle:shortVersionString="2.6">
             </enclosure>
         </item>
 	</channel>
