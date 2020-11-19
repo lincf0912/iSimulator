@@ -11,7 +11,7 @@
                 <li>修复没有最近使用列表时，无法显示所有设备的bug</li>
             </ul>]]></description>
             <pubDate>2020-11-19 16:13:20 GMT</pubDate>
-            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.5/iSimulator-2.6.zip" length="3,374,294" type="application/octet-stream" sparkle:version="26" sparkle:shortVersionString="2.6">
+            <enclosure url="https://github.com/lincf0912/iSimulator/releases/download/2.6/iSimulator-2.6.zip" length="3,374,294" type="application/octet-stream" sparkle:version="26" sparkle:shortVersionString="2.6">
             </enclosure>
         </item>
 	</channel>
